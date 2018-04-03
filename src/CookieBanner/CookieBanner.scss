@@ -1,0 +1,11 @@
+@import "~@edx/edx-bootstrap/sass/edx/theme";
+@import "~bootstrap/scss/bootstrap";
+
+.edx-cookie-banner {
+  background: white;
+  border: white;
+
+  .btn.close {
+    color: blue;
+  }
+}

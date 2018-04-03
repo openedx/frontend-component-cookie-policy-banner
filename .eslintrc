@@ -1,0 +1,17 @@
+{
+  "extends": ["eslint-config-edx"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "jest": true
+  },
+  "overrides": {
+    "files": ["*.stories.jsx", "*.test.jsx"],
+    "rules": {
+      "import/no-extraneous-dependencies": "off"
+    }
+  }
+}
