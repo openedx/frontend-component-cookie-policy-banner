@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StatusAlert } from '@edx/paragon';
 import PropTypes from 'prop-types';
 
-import { LANGUAGE_CODES_TO_CONTENT } from '../constants';
+import { getPolicyHTML } from '../constants';
 import { getLanguageCode, hasViewedCookieBanner, createHasViewedCookieBanner } from '../utilities';
 
 import styles from './CookieBanner.scss';
@@ -33,12 +33,14 @@ class CookieBanner extends Component {
 
   render() {
     return (
-      <StatusAlert
-        className={['edx-cookie-banner']}
-        open={this.state.open}
-        dialog={LANGUAGE_CODES_TO_CONTENT[getLanguageCode()]}
-        onClose={this.onClose}
-      />
+      <div className="edx-cookie-banner-wrapper" aria-live="polite">
+        <StatusAlert
+          className={['edx-cookie-banner']}
+          open={this.state.open}
+          dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(getLanguageCode()) }} />)}
+          onClose={this.onClose}
+        />
+      </div>
     );
   }
 }

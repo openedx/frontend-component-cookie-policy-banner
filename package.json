@@ -18,7 +18,7 @@
     "prepublishOnly": "npm run compile",
     "semantic-commit": "commit",
     "semantic-release": "semantic-release",
-    "start": "start-storybook -p 6006",
+    "start": "start-storybook -p 3003",
     "travis-deploy-once": "travis-deploy-once"
   },
   "dependencies": {

@@ -1,11 +1,43 @@
 @import "~@edx/edx-bootstrap/sass/edx/theme";
 @import "~bootstrap/scss/bootstrap";
 
-.edx-cookie-banner {
-  background: white;
-  border: white;
+$banner-background-color: #f2f8fd;
+$cta-base: #0075b4;
+$cta-hover: #075683;
 
-  .btn.close {
-    color: blue;
+.edx-cookie-banner-wrapper {
+  background: $banner-background-color;
+
+  .edx-cookie-banner {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: inherit;
+    border: none;
+
+    .policy-link {
+      color: $cta-base;
+      text-decoration: underline;
+
+      &:focus,
+      &:hover {
+        color: $cta-hover;
+      }
+    }
+
+    .alert-dialog {
+      margin-right: 20px;
+    }
+
+    .btn.close {
+      color: $cta-base;
+
+      &:focus,
+      &:hover {
+        color: $cta-hover;
+        cursor: pointer;
+      }
+    }
   }
 }
