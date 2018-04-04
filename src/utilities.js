@@ -13,7 +13,7 @@ const getLanguageCode = () => {
   return languageCode;
 };
 
-const createHasViewedCookieBanner = () => new Cookie('edx.org').set('has-viewed-cookie', true);
+const createHasViewedCookieBanner = () => new Cookie('edx.org').set('has-viewed-cookie', true, { domain: '.edx.org' });
 
 const hasViewedCookieBanner = () => !!new Cookie('edx.org').get('has-viewed-cookie');
 
