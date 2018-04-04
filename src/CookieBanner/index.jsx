@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React, { Component } from 'react';
 import { StatusAlert } from '@edx/paragon';
 import PropTypes from 'prop-types';
@@ -13,15 +14,16 @@ class CookieBanner extends Component {
 
     this.onClose = this.onClose.bind(this);
 
-    this.state = { open: false };
+    // this.state = { open: false };
+    this.state = { open: true };
   }
 
   componentDidMount() {
     if (hasViewedCookieBanner()) {
-      this.setState({ open: false });
+      this.toggleDisplay(false);
     } else {
       createHasViewedCookieBanner();
-      this.setState({ open: true });
+      this.toggleDisplay(true);
     }
   }
 
@@ -31,11 +33,29 @@ class CookieBanner extends Component {
     this.props.onClose(event);
   }
 
+  toggleDisplay(open) {
+    // this.setState({ open });
+  }
+
   render() {
+    const bannerStyle = {
+      display: 'flex',
+      justifyContent: 'space-between',
+      maxWidth: '1200px',
+      margin: '0 auto',
+      background: 'inherit',
+      border: 'none',
+    };
+
     return (
-      <div className="edx-cookie-banner-wrapper" aria-live="polite">
+      <div
+        className="edx-cookie-banner-wrapper"
+        style={{ background: '#f2f8fd' }}
+        aria-live="polite"
+      >
         <StatusAlert
           className={['edx-cookie-banner']}
+          style={bannerStyle}
           open={this.state.open}
           dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(getLanguageCode()) }} />)}
           onClose={this.onClose}
