@@ -11,7 +11,7 @@
   "scripts": {
     "codecov": "codecov",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "compile": "babel -d build/ src/ --ignore node_modules,*.test.js",
+    "compile": "babel -d build/index src/ --ignore node_modules,*.test.js",
     "deploy-storybook-ci": "storybook-to-ghpages --ci",
     "lint": "eslint --ext .js .",
     "test": "jest --coverage --passWithNoTests",

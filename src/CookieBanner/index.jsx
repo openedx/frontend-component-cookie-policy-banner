@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { getPolicyHTML } from '../constants';
 import { getLanguageCode, hasViewedCookieBanner, createHasViewedCookieBanner } from '../utilities';
 
-import styles from './CookieBanner.scss';
+// import styles from './CookieBanner.scss';
 
 class CookieBanner extends Component {
   constructor(props) {
