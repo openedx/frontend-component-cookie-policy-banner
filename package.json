@@ -2,7 +2,7 @@
   "name": "@edx/cookie-policy-banner",
   "version": "0.0.0",
   "description": "The edX cookie policy banner component implemented in React.",
-  "main": "themeable/index.js",
+  "main": "build/index.js",
   "license": "AGPL-3.0",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
   "scripts": {
     "codecov": "codecov",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "compile": "babel -d build/index src/ --ignore node_modules,*.test.js",
+    "compile": "babel -d build/ src/ --ignore node_modules,*.test.js",
     "deploy-storybook-ci": "storybook-to-ghpages --ci",
     "lint": "eslint --ext .js .",
     "test": "jest --coverage --passWithNoTests",
