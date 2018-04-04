@@ -1,14 +1,59 @@
-@import "~@edx/edx-bootstrap/sass/edx/theme";
-@import "~bootstrap/scss/bootstrap";
-
 $banner-background-color: #f2f8fd;
 $cta-base: #0075b4;
 $cta-hover: #075683;
 
 .edx-cookie-banner-wrapper {
   background: $banner-background-color;
+  box-sizing: border-box;
+
+  /** Base Styles - start **/
+  text-align: left;
+  line-height: 1.5;
+  font: {
+    family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    size: 1rem;
+    weight: 400;
+  }
+
+  .alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .alert-warning {
+    color: #766410;
+  }
+
+  .alert-dismissible {
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.75rem 1.25rem;
+      background: transparent;
+      border: 0;
+      text-shadow: 0 1px 0 #fff;
+      opacity: 0.5;
+      float: right;
+      line-height: 1;
+      font: {
+        size: 1.5rem;
+        weight: 700;
+      }
+    }
+
+    .btn {
+      display: inline-block;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+  }
+  /** Base Styles - end **/
+
 
   .edx-cookie-banner {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     max-width: 1200px;
@@ -27,7 +72,7 @@ $cta-hover: #075683;
     }
 
     .alert-dialog {
-      margin-right: 20px;
+      margin-right: 30px;
     }
 
     .btn.close {

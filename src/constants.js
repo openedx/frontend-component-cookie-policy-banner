@@ -9,11 +9,11 @@ const getPolicyHTML = (tag) => {
 
   if (tag === SPANISH_IETF_TAG) {
     const linkOpen = '<a href="https://edx.org/es/privacy-policy" class="policy-link">';
-    return `By using the website, you consent to our use of cookies in accordance with the terms of the edX ${linkOpen} Privacy Policy ${linkClose}.`;
+    return `EdX and its Members use cookies and other tracking technologies for performance, analytics, and marketing purposes. By using this website, you accept this use. Learn more about these technologies in the ${linkOpen} Privacy Policy ${linkClose}.`
   }
   
   const linkOpen = '<a href="https://edx.org/privacy-policy" class="policy-link">';
-  return `By using the website, you consent to our use of cookies in accordance with the terms of the edX ${linkOpen} Privacy Policy ${linkClose}.`;
+  return `EdX and its Members use cookies and other tracking technologies for performance, analytics, and marketing purposes. By using this website, you accept this use. Learn more about these technologies in the ${linkOpen} Privacy Policy ${linkClose}.`
 }
 
 export {
