@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { StatusAlert } from '@edx/paragon';
 import PropTypes from 'prop-types';
 
-import { getPolicyHTML } from '../constants';
+import { LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL, getPolicyHTML } from '../constants';
 import { getLanguageCode, hasViewedCookieBanner, createHasViewedCookieBanner } from '../utilities';
 
 class CookieBanner extends Component {
@@ -36,12 +36,14 @@ class CookieBanner extends Component {
   }
 
   render() {
+    const langCode = getLanguageCode();
     return (
       <div className="edx-cookie-banner-wrapper" aria-live="polite">
         <StatusAlert
           className={['edx-cookie-banner']}
           open={this.state.open}
-          dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(getLanguageCode()) }} />)}
+          closeButtonAriaLabel={LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL[langCode]}
+          dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(langCode) }} />)}
           onClose={this.onClose}
         />
       </div>

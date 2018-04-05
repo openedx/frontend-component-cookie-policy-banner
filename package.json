@@ -3,6 +3,7 @@
   "version": "0.0.4",
   "description": "The edX cookie policy banner component implemented in React.",
   "main": "build/index.js",
+  "style": "build/_cookie-banner.scss",
   "license": "AGPL-3.0",
   "repository": {
     "type": "git",
@@ -25,7 +26,7 @@
   },
   "dependencies": {
     "@edx/edx-bootstrap": "^0.4.3",
-    "@edx/paragon": "^2.5.0",
+    "@edx/paragon": "^2.5.6",
     "classnames": "^2.2.5",
     "cookieconsent": "^3.0.6",
     "node-sass-import": "^1.1.1",
