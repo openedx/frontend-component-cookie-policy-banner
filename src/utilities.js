@@ -13,9 +13,23 @@ const getLanguageCode = () => {
   return languageCode;
 };
 
-const createHasViewedCookieBanner = () => new Cookie('edx.org').set('has-viewed-cookie', true, { domain: '.edx.org' });
+const createHasViewedCookieBanner = () => {
+  const host = window.location.hostname;
 
-const hasViewedCookieBanner = () => !!new Cookie('edx.org').get('has-viewed-cookie');
+  // edx.org uses different subdomains so use a root domain to match across services
+  if (host.indexOf('stage.edx.org') !== -1 ||
+      host.indexOf('dev.edx.org') !== -1 ||
+      host.indexOf('acceptance.edx.org') !== -1 ||
+      host.indexOf('qa.edx.org') !== -1) {
+    return new Cookie('edx.org').set('edx-cookie-policy-viewed', true, { domain: '.stage.edx.org' });
+  } else if (host.indexOf('.edx.org') !== -1) {
+    return new Cookie('edx.org').set('edx-cookie-policy-viewed', true, { domain: '.edx.org' });
+  }
+
+  return false;
+};
+
+const hasViewedCookieBanner = () => !!new Cookie('edx.org').get('edx-cookie-policy-viewed');
 
 export {
   getLanguageCode,

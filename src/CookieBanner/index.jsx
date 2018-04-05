@@ -12,8 +12,7 @@ class CookieBanner extends Component {
 
     this.onClose = this.onClose.bind(this);
 
-    // this.state = { open: false };
-    this.state = { open: true };
+    this.state = { open: false };
   }
 
   componentDidMount() {
@@ -32,7 +31,7 @@ class CookieBanner extends Component {
   }
 
   toggleDisplay(open) {
-    // this.setState({ open });
+    this.setState({ open });
   }
 
   render() {
