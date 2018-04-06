@@ -36,17 +36,23 @@ class CookieBanner extends Component {
 
   render() {
     const langCode = getLanguageCode();
-    return (
-      <div className="edx-cookie-banner-wrapper" aria-live="polite">
-        <StatusAlert
-          className={['edx-cookie-banner']}
-          open={this.state.open}
-          closeButtonAriaLabel={LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL[langCode]}
-          dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(langCode) }} />)}
-          onClose={this.onClose}
-        />
-      </div>
-    );
+    const { open } = this.state;
+
+    if (open) {
+      return (
+        <div className="edx-cookie-banner-wrapper" aria-live="polite">
+          <StatusAlert
+            className={['edx-cookie-banner']}
+            open={this.state.open}
+            closeButtonAriaLabel={LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL[langCode]}
+            dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(langCode) }} />)}
+            onClose={this.onClose}
+          />
+        </div>
+      );
+    }
+
+    return false;
   }
 }
 

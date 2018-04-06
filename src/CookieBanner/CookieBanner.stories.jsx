@@ -1,8 +1,7 @@
 import React from 'react';
-import { storiesOf, addDecorator } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
+import { storiesOf } from '@storybook/react';
 import CookieBanner from './index';
-import styles from './_cookie-banner.scss';
+import './_cookie-banner.scss';
 
 storiesOf('Cookie Banner', CookieBanner)
   .add('basic usage', () => (<CookieBanner />));
