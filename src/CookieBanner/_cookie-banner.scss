@@ -1,9 +1,10 @@
-$banner-background-color: #f2f8fd;
-$cta-base: #0075b4;
-$cta-hover: #075683;
+$cookie-banner-background-color: #f2f8fd !default;
+$cookie-banner-text-color: #4e4e4e !default;
+$cookie-banner-cta-base: #0075b4 !default;
+$cookie-banner-cta-hover: #075683 !default;
 
 .edx-cookie-banner-wrapper {
-  background: $banner-background-color;
+  background: $cookie-banner-background-color;
   box-sizing: border-box;
 
   /** Base Styles - start **/
@@ -58,25 +59,27 @@ $cta-hover: #075683;
     border: none;
 
     .policy-link {
-      color: $cta-base;
+      color: $cookie-banner-cta-base;
       text-decoration: underline;
 
       &:focus,
       &:hover {
-        color: $cta-hover;
+        color: $cookie-banner-cta-hover;
+        border: none;
       }
     }
 
     .alert-dialog {
       margin-right: 30px;
+      color: $cookie-banner-text-color;
     }
 
     .btn.close {
-      color: $cta-base;
+      color: $cookie-banner-cta-base;
 
       &:focus,
       &:hover {
-        color: $cta-hover;
+        color: $cookie-banner-cta-hover;
         cursor: pointer;
       }
     }
