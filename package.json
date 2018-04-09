@@ -1,6 +1,6 @@
 {
   "name": "@edx/cookie-policy-banner",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "The edX cookie policy banner component implemented in React.",
   "main": "build/index.js",
   "style": "build/_cookie-banner.scss",
