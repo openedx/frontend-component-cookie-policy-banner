@@ -1,3 +1,3 @@
-import CookieBanner from './CookieBanner';
+import CookiePolicyBanner from './CookiePolicyBanner';
 
-export default CookieBanner;
+export default CookiePolicyBanner;
