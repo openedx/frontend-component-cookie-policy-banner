@@ -9,6 +9,14 @@
     "type": "git",
     "url": "https://github.com/edx/cookie-policy-banner"
   },
+  "keywords": [
+    "edx",
+    "cookie",
+    "cookie banner",
+    "react",
+    "component",
+    "react component"
+  ],
   "scripts": {
     "codecov": "codecov",
     "commitmsg": "commitlint -e $GIT_PARAMS",
