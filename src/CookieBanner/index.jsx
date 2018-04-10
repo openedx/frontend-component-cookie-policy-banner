@@ -8,7 +8,12 @@ import {
   LANGUAGE_CODES_TO_CONTAINER_ROLE_LABEL,
   getPolicyHTML,
 } from '../constants';
-import { getLanguageCode, hasViewedCookieBanner, createHasViewedCookieBanner } from '../utilities';
+import {
+  getLanguageCode,
+  hasViewedCookieBanner,
+  createHasViewedCookieBanner,
+} from '../utilities';
+import CookieBannerText from './CookieBannerText';
 
 class CookieBanner extends Component {
   constructor(props) {
@@ -52,9 +57,9 @@ class CookieBanner extends Component {
         >
           <StatusAlert
             className={['edx-cookie-banner']}
-            open={this.state.open}
+            open={open}
             closeButtonAriaLabel={LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL[langCode]}
-            dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(langCode) }} />)}
+            dialog={<CookieBannerText nonPrivacyPolicyText="foo fucking" privacyPolicyText=" bar " privacyPolicyDestination="https://www.edx.org" />}
             onClose={this.onClose}
           />
         </div>
