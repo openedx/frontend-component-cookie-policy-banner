@@ -7,6 +7,8 @@ import {
   LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL,
   LANGUAGE_CODES_TO_CONTAINER_ROLE_LABEL,
   getPolicyHTML,
+  DEFAULT_CONTAINER_ROLE_LABEL,
+  DEFAULT_CLOSE_BUTTON_LABEL,
 } from '../constants';
 import { getLanguageCode, hasViewedCookieBanner, createHasViewedCookieBanner } from '../utilities';
 
@@ -39,21 +41,26 @@ class CookieBanner extends Component {
   }
 
   render() {
-    const langCode = getLanguageCode();
     const { open } = this.state;
+    const langCode = getLanguageCode();
+
+    const containerRoleLabel = LANGUAGE_CODES_TO_CONTAINER_ROLE_LABEL[langCode]
+      || DEFAULT_CONTAINER_ROLE_LABEL;
+    const closeButtonLabel = LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL[langCode]
+      || DEFAULT_CLOSE_BUTTON_LABEL;
 
     if (open) {
       return (
         <div
           className="edx-cookie-banner-wrapper"
           role="complementary"
-          aria-label={LANGUAGE_CODES_TO_CONTAINER_ROLE_LABEL[langCode]}
+          aria-label={containerRoleLabel}
           aria-live="polite"
         >
           <StatusAlert
             className={['edx-cookie-banner']}
-            open={this.state.open}
-            closeButtonAriaLabel={LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL[langCode]}
+            open={open}
+            closeButtonAriaLabel={closeButtonLabel}
             dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(langCode) }} />)}
             onClose={this.onClose}
           />
