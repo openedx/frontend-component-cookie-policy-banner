@@ -9,14 +9,14 @@ setDefaults({
 });
 
 setTimeout(() => setOptions({
-  name: 'EDX COOKIE BANNER',
-  url: 'https://github.com/jaebradley/edx-cookie-banner',
+  name: 'EDX COOKIE POLICY BANNER',
+  url: 'https://github.com/edx/cookie-policy-banner',
   showAddonPanel: true,
   addonPanelInRight: true,
 }), 1000);
 
 function loadStories() {
-  require('../src/CookieBanner/CookieBanner.stories.jsx');
+  require('../src/CookiePolicyBanner/CookiePolicyBanner.stories.jsx');
 }
 
 configure(loadStories, module);
