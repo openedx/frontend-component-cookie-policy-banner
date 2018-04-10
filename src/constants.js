@@ -4,11 +4,13 @@ const DEFAULT_IETF_TAG = ENGLISH_IETF_TAG;
 
 const LANGUAGE_CODES = Object.freeze([ENGLISH_IETF_TAG, SPANISH_IETF_TAG]);
 
-
+const DEFAULT_CONTAINER_ROLE_LABEL = 'Notice about use of cookies on edx.org.';
 const LANGUAGE_CODES_TO_CONTAINER_ROLE_LABEL = Object.freeze({
   [ENGLISH_IETF_TAG]: 'Notice about use of cookies on edx.org.',
   [SPANISH_IETF_TAG]: 'Notice about use of cookies on edx.org.',
 });
+
+const DEFAULT_CLOSE_BUTTON_LABEL = 'Close the notice about use of cookies on edx.org.';
 const LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL = Object.freeze({
   [ENGLISH_IETF_TAG]: 'Close the notice about use of cookies on edx.org.',
   [SPANISH_IETF_TAG]: 'Close the notice about use of cookies on edx.org.',
@@ -32,4 +34,6 @@ export {
   LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL,
   LANGUAGE_CODES_TO_CONTAINER_ROLE_LABEL,
   getPolicyHTML,
+  DEFAULT_CONTAINER_ROLE_LABEL,
+  DEFAULT_CLOSE_BUTTON_LABEL,
 };
