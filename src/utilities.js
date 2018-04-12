@@ -26,10 +26,13 @@ const getLanguageCode = () => {
 };
 
 const createHasViewedCookieBanner = () => {
+  const path = '/';
+  const maxAge = Number.MAX_SAFE_INTEGER;
+
   if (isStage()) {
-    return new Cookie().set('edx-cookie-policy-viewed', true, { domain: '.stage.edx.org' });
+    return new Cookie().set('edx-cookie-policy-viewed', true, { domain: '.stage.edx.org', path, maxAge });
   } else if (isProduction()) {
-    return new Cookie().set('edx-cookie-policy-viewed', true, { domain: '.edx.org' });
+    return new Cookie().set('edx-cookie-policy-viewed', true, { domain: '.edx.org', path, maxAge });
   }
 
   return false;
