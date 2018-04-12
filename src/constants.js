@@ -1,6 +1,14 @@
 const ENGLISH_IETF_TAG = 'en';
 const SPANISH_IETF_TAG = 'es-419';
 const DEFAULT_IETF_TAG = ENGLISH_IETF_TAG;
+const STAGE_ENVIRONMENTS = [
+  'acceptance.edx.org',
+  'dev.edx.org',
+  'extra.edx.org',
+  'qa.edx.org',
+  'stage.edx.org',
+  'localhost',
+];
 
 const LANGUAGE_CODES = Object.freeze([ENGLISH_IETF_TAG, SPANISH_IETF_TAG]);
 
