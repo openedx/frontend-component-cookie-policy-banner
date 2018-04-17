@@ -27,12 +27,13 @@ const getLanguageCode = () => {
 
 const createHasViewedCookieBanner = () => {
   const path = '/';
-  const maxAge = Number.MAX_SAFE_INTEGER;
+  // maximum date http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.1
+  const expires = new Date(8640000000000000);
 
   if (isStage()) {
-    return new Cookie().set('edx-cookie-policy-viewed', true, { domain: '.stage.edx.org', path, maxAge });
+    return new Cookie().set('edx-cookie-policy-viewed', true, { domain: '.stage.edx.org', path, expires });
   } else if (isProduction()) {
-    return new Cookie().set('edx-cookie-policy-viewed', true, { domain: '.edx.org', path, maxAge });
+    return new Cookie().set('edx-cookie-policy-viewed', true, { domain: '.edx.org', path, expires });
   }
 
   return false;
