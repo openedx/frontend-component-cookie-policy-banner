@@ -1,12 +1,27 @@
 import Cookie from 'universal-cookie';
 
-import { DEFAULT_IETF_TAG, LANGUAGE_CODES, STAGE_ENVIRONMENTS } from './constants';
+import {
+  DEFAULT_IETF_TAG,
+  LANGUAGE_CODES,
+  STAGE_ENVIRONMENTS,
+  LOCALHOST,
+  COOKIE_POLICY_VIEWED_NAME,
+} from './constants';
 
-const isStage = () => {
-  const host = window.location.hostname;
+const isLocalhost = () => window.location.hostname.indexOf(LOCALHOST) >= 0;
 
-  return STAGE_ENVIRONMENTS.filter(environment => host.indexOf(environment) > -1).length > 0;
+const firstMatchingStageEnvironment = () => {
+  const matches = STAGE_ENVIRONMENTS
+    .filter(environment => window.location.hostname.indexOf(environment) >= 0);
+
+  if (matches.length > 0) {
+    return matches[0];
+  }
+
+  return null;
 };
+
+const isStage = () => !!firstMatchingStageEnvironment();
 
 const isProduction = () => {
   const host = window.location.hostname;
@@ -33,17 +48,35 @@ const createHasViewedCookieBanner = () => {
   // nor does the max Date defined in http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.1
   const maxAge = 2147483647;
 
+  if (isLocalhost()) {
+    return new Cookie().set(
+      COOKIE_POLICY_VIEWED_NAME,
+      true,
+      { domain: LOCALHOST, path, maxAge },
+    );
+  }
+
   if (isStage()) {
-    return new Cookie().set('edx-cookie-policy-viewed', true, { domain: '.stage.edx.org', path, maxAge });
-  } else if (isProduction()) {
-    return new Cookie().set('edx-cookie-policy-viewed', true, { domain: '.edx.org', path, maxAge });
+    return new Cookie().set(
+      COOKIE_POLICY_VIEWED_NAME,
+      true,
+      { domain: `.${firstMatchingStageEnvironment()}`, path, maxAge },
+    );
+  }
+
+  if (isProduction()) {
+    return new Cookie().set(
+      COOKIE_POLICY_VIEWED_NAME,
+      true,
+      { domain: '.edx.org', path, maxAge },
+    );
   }
 
   return false;
 };
 
 const hasViewedCookieBanner = () => {
-  const cookie = new Cookie().get('edx-cookie-policy-viewed');
+  const cookie = new Cookie().get(COOKIE_POLICY_VIEWED_NAME);
 
   return !!cookie;
 };
@@ -52,4 +85,7 @@ export {
   getLanguageCode,
   createHasViewedCookieBanner,
   hasViewedCookieBanner,
+  isLocalhost,
+  firstMatchingStageEnvironment,
+  isStage,
 };
