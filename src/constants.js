@@ -2,13 +2,18 @@ const ENGLISH_IETF_TAG = 'en';
 const SPANISH_IETF_TAG = 'es-419';
 const DEFAULT_IETF_TAG = ENGLISH_IETF_TAG;
 const LOCALHOST = 'localhost';
-const STAGE_ENVIRONMENTS = [
-  'acceptance.edx.org',
-  'dev.edx.org',
-  'extra.edx.org',
-  'qa.edx.org',
-  'stage.edx.org',
-];
+const ACCEPTANCE = 'ACCEPTANCE';
+const DEV = 'DEV';
+const EXTRA = 'EXTRA';
+const QA = 'QA';
+const STAGE = 'STAGE';
+const STAGE_ENVIRONMENTS = Object.freeze({
+  [ACCEPTANCE]: { baseURL: 'acceptance.edx.org', prefix: 'acceptance' },
+  [DEV]: { baseURL: 'dev.edx.org', prefix: 'dev' },
+  [EXTRA]: { baseURL: 'extra.edx.org', prefix: 'extra' },
+  [QA]: { baseURL: 'qa.edx.org', prefix: 'qa' },
+  [STAGE]: { baseURL: 'stage.edx.org', prefix: 'stage' },
+});
 
 const LANGUAGE_CODES = Object.freeze([ENGLISH_IETF_TAG, SPANISH_IETF_TAG]);
 
@@ -42,7 +47,7 @@ export {
   LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL,
   LANGUAGE_CODES_TO_CONTAINER_ROLE_LABEL,
   getPolicyHTML,
-  STAGE_ENVIRONMENTS,
   LOCALHOST,
   COOKIE_POLICY_VIEWED_NAME,
+  STAGE_ENVIRONMENTS,
 };

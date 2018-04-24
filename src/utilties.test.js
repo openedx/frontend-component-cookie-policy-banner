@@ -1,8 +1,7 @@
 import {
-  isLocalhost,
   firstMatchingStageEnvironment,
-  isStage,
-  getCookieDomain,
+  isProduction,
+  getCookieCreationData,
 } from './utilities';
 import {
   STAGE_ENVIRONMENTS,
@@ -10,18 +9,6 @@ import {
 } from './constants';
 
 describe('utilities', () => {
-  describe('#isLocalhost', () => {
-    it('should be true when window.location.hostname contains localhost', () => {
-      jsdom.reconfigure({ url: `http://${LOCALHOST}:8080/` });
-      expect(isLocalhost()).toBe(true);
-    });
-
-    it('should be false when window.location.hostname does not contain localhost', () => {
-      jsdom.reconfigure({ url: 'https://www.edx.org/' });
-      expect(isLocalhost()).toBe(false);
-    });
-  });
-
   describe('#firstMatchingStageEnvironment', () => {
     it('null matching stage environment for localhost', () => {
       jsdom.reconfigure({ url: `http://${LOCALHOST}:8080/` });
@@ -34,27 +21,63 @@ describe('utilities', () => {
     });
 
     it('non-null matching stage environment', () => {
-      const stageEnvironment = STAGE_ENVIRONMENTS[0];
-      jsdom.reconfigure({ url: `https://www.${stageEnvironment}` });
+      const stageEnvironment = STAGE_ENVIRONMENTS.STAGE;
+      jsdom.reconfigure({ url: `https://www.${stageEnvironment.baseURL}` });
       expect(firstMatchingStageEnvironment()).toEqual(stageEnvironment);
     });
   });
 
-  describe('#isStage', () => {
+  describe('#isProduction', () => {
     it('false for localhost', () => {
       jsdom.reconfigure({ url: `http://${LOCALHOST}:8080/` });
-      expect(isStage()).toBe(false);
+      expect(isProduction()).toBe(false);
     });
 
-    it('false for edx.org', () => {
+    it('true for edx.org', () => {
       jsdom.reconfigure({ url: 'https://www.edx.org/' });
-      expect(isStage()).toBe(false);
+      expect(isProduction()).toBe(true);
     });
 
-    it('true for stage environment', () => {
-      const stageEnvironment = STAGE_ENVIRONMENTS[0];
-      jsdom.reconfigure({ url: `https://www.${stageEnvironment}` });
-      expect(isStage()).toBe(true);
+    it('false for stage environment', () => {
+      const stageEnvironment = STAGE_ENVIRONMENTS.STAGE;
+      jsdom.reconfigure({ url: `https://www.${stageEnvironment.baseURL}` });
+      expect(isProduction()).toBe(false);
+    });
+  });
+
+  describe('#getCookieCreationData', () => {
+    it('localhost cookie creation data', () => {
+      jsdom.reconfigure({ url: `http://${LOCALHOST}:8080/` });
+      const expected = {
+        cookieName: 'localhost-edx-cookie-policy-viewed',
+        domain: 'localhost',
+        path: '/',
+        maxAge: 2147483647,
+      };
+      expect(getCookieCreationData()).toEqual(expected);
+    });
+
+    it('stage cookie creation data', () => {
+      const stageEnvironment = STAGE_ENVIRONMENTS.STAGE;
+      jsdom.reconfigure({ url: `https://www.${stageEnvironment.baseURL}` });
+      const expected = {
+        cookieName: 'stage-edx-cookie-policy-viewed',
+        domain: '.stage.edx.org',
+        path: '/',
+        maxAge: 2147483647,
+      };
+      expect(getCookieCreationData()).toEqual(expected);
+    });
+
+    it('prod cookie creation data', () => {
+      jsdom.reconfigure({ url: 'https://www.edx.org/' });
+      const expected = {
+        cookieName: 'prod-edx-cookie-policy-viewed',
+        domain: '.edx.org',
+        path: '/',
+        maxAge: 2147483647,
+      };
+      expect(getCookieCreationData()).toEqual(expected);
     });
   });
 });

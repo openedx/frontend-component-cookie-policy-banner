@@ -8,26 +8,58 @@ import {
   COOKIE_POLICY_VIEWED_NAME,
 } from './constants';
 
-const isLocalhost = () => window.location.hostname.indexOf(LOCALHOST) >= 0;
-
 const firstMatchingStageEnvironment = () => {
-  const matches = STAGE_ENVIRONMENTS
-    .filter(environment => window.location.hostname.indexOf(environment) >= 0);
+  const matches = Object.keys(STAGE_ENVIRONMENTS)
+    .filter(key => window.location.hostname.indexOf(STAGE_ENVIRONMENTS[key].baseURL) >= 0);
 
   if (matches.length > 0) {
-    return matches[0];
+    return STAGE_ENVIRONMENTS[matches[0]];
   }
 
   return null;
 };
 
-const isStage = () => !!firstMatchingStageEnvironment();
+// Setting path to '/' to be apply to all subdomains
+// Setting maxAge to 2^31 -1
+// because Number.SAFE_MAX_INTEGER does not get processed properly by the browser
+// nor does the max Date defined in http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.1
+const buildCookieCreationData = ({ prefix, domain }) => ({
+  cookieName: `${prefix}-${COOKIE_POLICY_VIEWED_NAME}`,
+  domain,
+  path: '/',
+  maxAge: 2147483647,
+});
 
-const isProduction = () => {
-  const host = window.location.hostname;
+const getCookieCreationData = () => {
+  if (window.location.hostname.indexOf(LOCALHOST) >= 0) {
+    return buildCookieCreationData({
+      prefix: LOCALHOST,
+      domain: LOCALHOST,
+    });
+  }
 
-  return !isStage() && host.indexOf('.edx.org') !== -1;
+  const stageEnvironment = firstMatchingStageEnvironment();
+
+  if (stageEnvironment) {
+    return buildCookieCreationData({
+      prefix: stageEnvironment.prefix,
+      domain: `.${stageEnvironment.baseURL}`,
+    });
+  }
+
+  if (window.location.hostname.indexOf('.edx.org') >= 0) {
+    return buildCookieCreationData({
+      prefix: 'prod',
+      domain: '.edx.org',
+    });
+  }
+
+  return null;
 };
+
+const isProduction = () => !firstMatchingStageEnvironment()
+  && window.location.hostname.indexOf(LOCALHOST) < 0
+  && window.location.hostname.indexOf('.edx.org') >= 0;
 
 const getLanguageCode = () => {
   const cookie = new Cookie('edx.org');
@@ -41,34 +73,21 @@ const getLanguageCode = () => {
 };
 
 const createHasViewedCookieBanner = () => {
-  const path = '/';
+  const cookieCreationData = getCookieCreationData();
 
-  // Setting maxAge to 2^31 -1
-  // because Number.SAFE_MAX_INTEGER does not get processed properly by the browser
-  // nor does the max Date defined in http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.1
-  const maxAge = 2147483647;
-
-  if (isLocalhost()) {
+  if (!!cookieCreationData
+      && !!cookieCreationData.cookieName
+      && !!cookieCreationData.domain
+      && !!cookieCreationData.path
+      && !!cookieCreationData.maxAge) {
     return new Cookie().set(
-      COOKIE_POLICY_VIEWED_NAME,
+      cookieCreationData.cookieName,
       true,
-      { domain: LOCALHOST, path, maxAge },
-    );
-  }
-
-  if (isStage()) {
-    return new Cookie().set(
-      COOKIE_POLICY_VIEWED_NAME,
-      true,
-      { domain: `.${firstMatchingStageEnvironment()}`, path, maxAge },
-    );
-  }
-
-  if (isProduction()) {
-    return new Cookie().set(
-      COOKIE_POLICY_VIEWED_NAME,
-      true,
-      { domain: '.edx.org', path, maxAge },
+      {
+        domain: cookieCreationData.domain,
+        path: cookieCreationData.path,
+        maxAge: cookieCreationData.maxAge,
+      },
     );
   }
 
@@ -76,7 +95,8 @@ const createHasViewedCookieBanner = () => {
 };
 
 const hasViewedCookieBanner = () => {
-  const cookie = new Cookie().get(COOKIE_POLICY_VIEWED_NAME);
+  const cookieCreationData = getCookieCreationData();
+  const cookie = new Cookie().get(cookieCreationData.cookieName);
 
   return !!cookie;
 };
@@ -85,7 +105,7 @@ export {
   getLanguageCode,
   createHasViewedCookieBanner,
   hasViewedCookieBanner,
-  isLocalhost,
   firstMatchingStageEnvironment,
-  isStage,
+  getCookieCreationData,
+  isProduction,
 };
