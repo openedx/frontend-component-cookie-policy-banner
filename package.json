@@ -28,7 +28,7 @@
     "deploy-storybook-ci": "storybook-to-ghpages --ci",
     "is-es5": "es-check es5 ./build/*.js",
     "lint": "eslint --ext .jsx,.js .",
-    "test": "jest --coverage --passWithNoTests",
+    "test": "jest --coverage --no-cache",
     "prepublishOnly": "npm run compile-prod",
     "css": "node-sass src/CookiePolicyBanner/_cookie-policy-banner.scss -o build --importer node_modules/node-sass-import",
     "semantic-commit": "commit",
@@ -80,6 +80,8 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "husky": "^0.14.3",
     "jest": "^22.4.3",
+    "jest-environment-jsdom": "^22.4.3",
+    "jest-environment-jsdom-global": "^1.0.3",
     "node-sass": "^4.8.3",
     "node-sass-import": "^1.1.1",
     "react": "^16.3.0",
@@ -95,6 +97,6 @@
     "webpack-cli": "^2.0.13"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "jest-environment-jsdom-global"
   }
 }
