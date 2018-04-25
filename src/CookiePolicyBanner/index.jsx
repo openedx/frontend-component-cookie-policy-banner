@@ -20,18 +20,14 @@ class CookieBanner extends Component {
   }
 
   componentDidMount() {
-    if (hasViewedCookieBanner()) {
-      this.toggleDisplay(false);
-    } else {
-      createHasViewedCookieBanner();
-      this.toggleDisplay(true);
-    }
+    this.toggleDisplay(!hasViewedCookieBanner());
   }
 
   onClose(event) {
-    this.setState({ open: false });
-
-    this.props.onClose(event);
+    this.setState({ open: false }, () => {
+      createHasViewedCookieBanner();
+      this.props.onClose(event);
+    });
   }
 
   toggleDisplay(open) {
