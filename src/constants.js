@@ -32,11 +32,11 @@ const getPolicyHTML = (tag) => {
 
   if (tag === SPANISH_IETF_TAG) {
     const linkOpen = '<a href="https://edx.org/es/edx-privacy-policy" class="policy-link">';
-    return `EdX and its Members use cookies and other tracking technologies for performance, analytics, and marketing purposes. By using this website, you accept this use. Learn more about these technologies in the ${linkOpen} Privacy Policy ${linkClose}.`;
+    return `EdX and its Members use cookies and other tracking technologies for performance, analytics, and marketing purposes. By using this website, you accept this use. Learn more about these technologies in the ${linkOpen}Privacy Policy${linkClose}.`;
   }
 
   const linkOpen = '<a href="https://edx.org/edx-privacy-policy" class="policy-link">';
-  return `EdX and its Members use cookies and other tracking technologies for performance, analytics, and marketing purposes. By using this website, you accept this use. Learn more about these technologies in the ${linkOpen} Privacy Policy ${linkClose}.`;
+  return `EdX and its Members use cookies and other tracking technologies for performance, analytics, and marketing purposes. By using this website, you accept this use. Learn more about these technologies in the ${linkOpen}Privacy Policy${linkClose}.`;
 };
 
 const COOKIE_POLICY_VIEWED_NAME = 'edx-cookie-policy-viewed';
