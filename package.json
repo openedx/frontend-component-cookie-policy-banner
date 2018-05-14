@@ -1,6 +1,6 @@
 {
   "name": "@edx/cookie-policy-banner",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "The edX cookie policy banner component implemented in React.",
   "main": "build/index.js",
   "style": "build/_cookie-policy-banner.scss",
@@ -47,8 +47,8 @@
     "universal-cookie": "^2.1.2"
   },
   "peerDependencies": {
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0"
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^6.1.3",
