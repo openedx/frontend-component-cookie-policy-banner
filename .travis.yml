@@ -19,6 +19,10 @@ jobs:
         - npm run is-es5
       before_script: greenkeeper-lockfile-update
       after_script: greenkeeper-lockfile-upload
+    - stage: deploy
+      if: branch = master
+      script:
+        - npm run travis-deploy-once 'npm run semantic-release'
     - stage: gh-pages
       if: branch = master
       script:

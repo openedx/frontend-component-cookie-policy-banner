@@ -29,7 +29,7 @@
     "is-es5": "es-check es5 ./build/*.js",
     "lint": "eslint --ext .jsx,.js .",
     "test": "jest --coverage --no-cache",
-    "prepublishOnly": "npm run compile-prod",
+    "prepare": "npm run compile-prod",
     "css": "node-sass src/CookiePolicyBanner/_cookie-policy-banner.scss -o build --importer node_modules/node-sass-import",
     "semantic-commit": "commit",
     "semantic-release": "semantic-release",
