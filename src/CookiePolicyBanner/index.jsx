@@ -4,11 +4,16 @@ import { StatusAlert } from '@edx/paragon';
 import PropTypes from 'prop-types';
 
 import {
-  LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL,
-  LANGUAGE_CODES_TO_CONTAINER_ROLE_LABEL,
+  IETF_TAGS_TO_CLOSE_BUTTON_LABEL,
+  IETF_TAGS_TO_CONTAINER_ROLE_LABEL,
+  IETF_TAGS_TO_LANGUAGE_CODE,
   getPolicyHTML,
 } from '../constants';
-import { getLanguageCode, hasViewedCookieBanner, createHasViewedCookieBanner } from '../utilities';
+import {
+  getIETFTag,
+  hasViewedCookieBanner,
+  createHasViewedCookieBanner,
+} from '../utilities';
 
 class CookieBanner extends Component {
   constructor(props) {
@@ -35,22 +40,23 @@ class CookieBanner extends Component {
   }
 
   render() {
-    const langCode = getLanguageCode();
+    const ietfTag = getIETFTag();
     const { open } = this.state;
 
     if (open) {
       return (
         <div
+          lang={IETF_TAGS_TO_LANGUAGE_CODE[ietfTag]}
           className="edx-cookie-banner-wrapper"
           role="complementary"
-          aria-label={LANGUAGE_CODES_TO_CONTAINER_ROLE_LABEL[langCode]}
+          aria-label={IETF_TAGS_TO_CONTAINER_ROLE_LABEL[ietfTag]}
           aria-live="polite"
         >
           <StatusAlert
             className={['edx-cookie-banner']}
             open={this.state.open}
-            closeButtonAriaLabel={LANGUAGE_CODES_TO_CLOSE_BUTTON_LABEL[langCode]}
-            dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(langCode) }} />)}
+            closeButtonAriaLabel={IETF_TAGS_TO_CLOSE_BUTTON_LABEL[ietfTag]}
+            dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag) }} />)}
             onClose={this.onClose}
           />
         </div>
