@@ -10,12 +10,14 @@ const DEV = 'DEV';
 const EXTRA = 'EXTRA';
 const QA = 'QA';
 const STAGE = 'STAGE';
+const GH_PAGES = 'GH_PAGES';
 const STAGE_ENVIRONMENTS = Object.freeze({
   [ACCEPTANCE]: { baseURL: 'acceptance.edx.org', prefix: 'acceptance' },
   [DEV]: { baseURL: 'dev.edx.org', prefix: 'dev' },
   [EXTRA]: { baseURL: 'extra.edx.org', prefix: 'extra' },
   [QA]: { baseURL: 'qa.edx.org', prefix: 'qa' },
   [STAGE]: { baseURL: 'stage.edx.org', prefix: 'stage' },
+  [GH_PAGES]: { baseURL: 'edx.github.io/cookie-policy-banner', prefix: 'gh-pages' },
 });
 
 const IETF_TAGS = Object.freeze([ENGLISH_IETF_TAG, SPANISH_IETF_TAG]);
