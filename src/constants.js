@@ -17,7 +17,7 @@ const STAGE_ENVIRONMENTS = Object.freeze({
   [EXTRA]: { baseURL: 'extra.edx.org', prefix: 'extra' },
   [QA]: { baseURL: 'qa.edx.org', prefix: 'qa' },
   [STAGE]: { baseURL: 'stage.edx.org', prefix: 'stage' },
-  [GH_PAGES]: { baseURL: 'edx.github.io/cookie-policy-banner', prefix: 'gh-pages' },
+  [GH_PAGES]: { baseURL: 'edx.github.io', prefix: 'gh-pages' },
 });
 
 const IETF_TAGS = Object.freeze([ENGLISH_IETF_TAG, SPANISH_IETF_TAG]);
