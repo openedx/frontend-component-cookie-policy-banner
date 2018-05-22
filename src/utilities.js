@@ -2,7 +2,7 @@ import Cookie from 'universal-cookie';
 
 import {
   DEFAULT_IETF_TAG,
-  LANGUAGE_CODES,
+  IETF_TAGS,
   STAGE_ENVIRONMENTS,
   LOCALHOST,
   COOKIE_POLICY_VIEWED_NAME,
@@ -61,15 +61,15 @@ const isProduction = () => !firstMatchingStageEnvironment()
   && window.location.hostname.indexOf(LOCALHOST) < 0
   && window.location.hostname.indexOf('.edx.org') >= 0;
 
-const getLanguageCode = () => {
+const getIETFTag = () => {
   const cookie = new Cookie('edx.org');
-  const languageCode = isProduction() ? cookie.get('prod-edx-language-preference') : cookie.get('stage-edx-language-preference');
+  const ietfTag = isProduction() ? cookie.get('prod-edx-language-preference') : cookie.get('stage-edx-language-preference');
 
-  if (!!languageCode || LANGUAGE_CODES.indexOf(languageCode) <= -1) {
+  if (!ietfTag || IETF_TAGS.indexOf(ietfTag) <= -1) {
     return DEFAULT_IETF_TAG;
   }
 
-  return languageCode;
+  return ietfTag;
 };
 
 const createHasViewedCookieBanner = () => {
@@ -102,7 +102,7 @@ const hasViewedCookieBanner = () => {
 };
 
 export {
-  getLanguageCode,
+  getIETFTag,
   createHasViewedCookieBanner,
   hasViewedCookieBanner,
   firstMatchingStageEnvironment,
