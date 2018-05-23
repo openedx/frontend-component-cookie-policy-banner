@@ -1,5 +1,6 @@
 # cookie-policy-banner
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/edx/cookie-policy-banner.svg)](https://greenkeeper.io/)
 [![npm](https://img.shields.io/npm/v/@edx/cookie-policy-banner.svg)](https://www.npmjs.com/package/@edx/cookie-policy-banner)
 [![npm](https://img.shields.io/npm/dt/@edx/cookie-policy-banner.svg)](https://www.npmjs.com/package/@edx/cookie-policy-banner)
 
