@@ -15,6 +15,8 @@ import {
   createHasViewedCookieBanner,
 } from '../utilities';
 
+import './_cookie-policy-banner.scss';
+
 class CookieBanner extends Component {
   constructor(props) {
     super(props);
