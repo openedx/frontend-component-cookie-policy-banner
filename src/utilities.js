@@ -96,9 +96,7 @@ const createHasViewedCookieBanner = () => {
 
 const hasViewedCookieBanner = () => {
   const cookieCreationData = getCookieCreationData();
-  const cookie = new Cookie().get(cookieCreationData.cookieName);
-
-  return !!cookie;
+  return !!cookieCreationData && !!new Cookie().get(cookieCreationData.cookieName);
 };
 
 export {
