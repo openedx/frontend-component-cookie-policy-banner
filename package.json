@@ -44,7 +44,7 @@
     "@edx/paragon": "^3.0.5",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
-    "universal-cookie": "^2.1.2"
+    "universal-cookie": "^3.0.1"
   },
   "peerDependencies": {
     "react": "^16.1.0",
