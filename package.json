@@ -84,7 +84,7 @@
     "jest-environment-jsdom-global": "^1.0.3",
     "node-sass": "^4.8.3",
     "node-sass-import": "^2.0.1",
-    "react": "^16.3.0",
+    "react": "^16.5.1",
     "react-dev-utils": "^5.0.0",
     "react-dom": "^16.3.0",
     "sass-loader": "^7.0.1",
