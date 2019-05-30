@@ -81,7 +81,7 @@ const getIETFTagFromLanguageCode = (languageCode) => {
   }
 
   return ietfTag;
-}
+};
 
 const createHasViewedCookieBanner = () => {
   const cookieCreationData = getCookieCreationData();
