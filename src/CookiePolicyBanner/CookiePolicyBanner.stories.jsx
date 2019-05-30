@@ -4,4 +4,7 @@ import CookiePolicyBanner from './index';
 import './_cookie-policy-banner.scss';
 
 storiesOf('Cookie Policy Banner', CookiePolicyBanner)
-  .add('basic usage', () => (<CookiePolicyBanner />));
+  .add('basic usage', () => (<CookiePolicyBanner />))
+  .add('languageCode "es" override', () => (<CookiePolicyBanner languageCode="es" />))
+  .add('languageCode "en" override', () => (<CookiePolicyBanner languageCode="en" />))
+  .add('languageCode override with unsupported language', () => (<CookiePolicyBanner languageCode="notsupported" />));
