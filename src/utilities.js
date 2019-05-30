@@ -4,6 +4,7 @@ import {
   DEFAULT_IETF_TAG,
   IETF_TAGS,
   STAGE_ENVIRONMENTS,
+  LANGUAGE_CODE_TO_IETF_TAGS,
   LOCALHOST,
   COOKIE_POLICY_VIEWED_NAME,
 } from './constants';
@@ -72,6 +73,16 @@ const getIETFTag = () => {
   return ietfTag;
 };
 
+const getIETFTagFromLanguageCode = (languageCode) => {
+  const ietfTag = LANGUAGE_CODE_TO_IETF_TAGS[languageCode];
+
+  if (!ietfTag || IETF_TAGS.indexOf(ietfTag) <= -1) {
+    return DEFAULT_IETF_TAG;
+  }
+
+  return ietfTag;
+}
+
 const createHasViewedCookieBanner = () => {
   const cookieCreationData = getCookieCreationData();
 
@@ -105,5 +116,6 @@ export {
   hasViewedCookieBanner,
   firstMatchingStageEnvironment,
   getCookieCreationData,
+  getIETFTagFromLanguageCode,
   isProduction,
 };

@@ -2,8 +2,12 @@ import {
   firstMatchingStageEnvironment,
   isProduction,
   getCookieCreationData,
+  getIETFTagFromLanguageCode,
 } from './utilities';
 import {
+  ENGLISH_IETF_TAG,
+  SPANISH_IETF_TAG,
+  DEFAULT_IETF_TAG,
   STAGE_ENVIRONMENTS,
   LOCALHOST,
 } from './constants';
@@ -78,6 +82,20 @@ describe('utilities', () => {
         maxAge: 2147483647,
       };
       expect(getCookieCreationData()).toEqual(expected);
+    });
+  });
+
+  describe('#getIETFTagFromLanguageCode', () => {
+    it('returns the Spanish ieftTag when passed "es"', () => {
+      expect(getIETFTagFromLanguageCode('es')).toEqual(SPANISH_IETF_TAG);
+    });
+
+    it('returns the English ieftTag when passed "en"', () => {
+      expect(getIETFTagFromLanguageCode('en')).toEqual(ENGLISH_IETF_TAG);
+    });
+
+    it('returns the Default ieftTag when passed an unsupported languageCode', () => {
+      expect(getIETFTagFromLanguageCode('de')).toEqual(DEFAULT_IETF_TAG);
     });
   });
 });

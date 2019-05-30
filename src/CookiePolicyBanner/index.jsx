@@ -11,6 +11,7 @@ import {
 } from '../constants';
 import {
   getIETFTag,
+  getIETFTagFromLanguageCode,
   hasViewedCookieBanner,
   createHasViewedCookieBanner,
 } from '../utilities';
@@ -40,8 +41,10 @@ class CookieBanner extends Component {
   }
 
   render() {
-    const ietfTag = getIETFTag();
+    const { languageCode } = this.props;
     const { open } = this.state;
+    const ietfTag = languageCode ?
+      getIETFTagFromLanguageCode(languageCode) : getIETFTag();
 
     if (open) {
       return (
@@ -69,10 +72,12 @@ class CookieBanner extends Component {
 
 CookieBanner.defaultProps = {
   onClose: () => {},
+  languageCode: undefined,
 };
 
 CookieBanner.propTypes = {
   onClose: PropTypes.func,
+  languageCode: PropTypes.string,
 };
 
 export default CookieBanner;
