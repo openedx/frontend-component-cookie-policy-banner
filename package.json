@@ -94,7 +94,7 @@
     "travis-deploy-once": "^5.0.0",
     "webpack": "^4.4.1",
     "webpack-build-notifier": "^0.1.23",
-    "webpack-cli": "^2.0.13"
+    "webpack-cli": "^3.3.5"
   },
   "jest": {
     "testEnvironment": "jest-environment-jsdom-global",
