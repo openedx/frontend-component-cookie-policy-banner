@@ -6,6 +6,11 @@
   "env": {
     "production": {
       "presets": ["minify"]
+    },
+    "test": {
+      "plugins": [
+        "babel-plugin-dynamic-import-node"
+      ]
     }
   }
 }
