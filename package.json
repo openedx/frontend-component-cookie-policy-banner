@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "@edx/edx-bootstrap": "^1.0.0",
-    "@edx/paragon": "^3.0.5",
+    "@edx/paragon": "^6.2.3",
     "babel-preset-minify": "^0.4.0",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
