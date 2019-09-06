@@ -10,7 +10,7 @@ setDefaults({
 
 setTimeout(() => setOptions({
   name: 'EDX COOKIE POLICY BANNER',
-  url: 'https://github.com/edx/cookie-policy-banner',
+  url: 'https://github.com/edx/frontend-component-cookie-policy-banner',
   showAddonPanel: true,
   addonPanelInRight: true,
 }), 1000);
