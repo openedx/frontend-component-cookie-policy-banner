@@ -3,6 +3,9 @@
   "version": "1.3.0",
   "description": "The edX cookie policy banner component implemented in React.",
   "main": "build/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "style": "build/_cookie-policy-banner.scss",
   "license": "AGPL-3.0",
   "repository": {

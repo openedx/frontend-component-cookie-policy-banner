@@ -1,25 +1,30 @@
 language: node_js
 cache:
   directories:
-    - ~/.npm
+  - "~/.npm"
 notifications:
   email: true
 node_js:
-  - '8'
+- '8'
 before_install:
-  - npm install -g npm@5
-  - npm install -g greenkeeper-lockfile@1
+- npm install -g npm@5
+- npm install -g greenkeeper-lockfile@1
 jobs:
   include:
-    - stage: test
-      script:
-        - npm run lint
-        - npm run test
-        - npm run compile-prod
-        - npm run is-es5
-      before_script: greenkeeper-lockfile-update
-      after_script: greenkeeper-lockfile-upload
-    - stage: gh-pages
-      if: branch = master
-      script:
-        - npm run deploy-storybook-ci
+  - stage: test
+    script:
+    - npm run lint
+    - npm run test
+    - npm run compile-prod
+    - npm run is-es5
+    before_script: greenkeeper-lockfile-update
+    after_script: greenkeeper-lockfile-upload
+  - stage: gh-pages
+    if: branch = master
+    script:
+    - npm run deploy-storybook-ci
+deploy:
+  api_key:
+    # NPM_TOKEN
+    secure: l3c3Wen5ld2zX81lqLBcxAp3kzBnG8lKJxkX/wq4DLPHo+eBI7j31N3IB1auWz+KsP8Z10jY0OOpViELR3qrDPLzS8tty1sz3eFX7tpc6Q4hOnCutvlaV5jdRI0hPTET1t+zYDMFln6MzOvTIr9bKRij3ebj0k+5HlFtWB/BE4ySoMXBr+mndHzLzjzF12SIkoMymt203GlbbykFe0ttHF9GfbAnn0/hvuh9AJ1XjPDGPdv00oyBjrPPykQs8z8AFxtlBA0eZF2gsbER0Iqy9+kxNjG1AAb3KXSy1eSlNdSj8TWdmWAOUt6A6MxkqsjOiaIZwo9SKseMm3EWAv9ubo8Dx3/ip2DapTAflr4KsGiRJjwYytYn483TyhM6WBv2utNBRxRCd9hN8KaU+2rqOyaFX6BwKg8m64QwIsvIAGXFvBfdqyenrsHrwCdIApuIvSruZpGttKu2NPftvxRLNsowM9bxBxMBhOBFpx8zTFQJ3y/M7xDBp4LAvbYqWTxYJ6ag6JXe9XKfGYrpkM91db4j3SBv+MOGivEZBY7JepFZU0SzWDn+84IsvxoiIeVt9zYJoZLghjalKkrdJfUAMMyjegnXFk2h6B1iq0pm7NQUnpTzbgdYgFq0ezW0OUlArsjAeXryEVep0flLROc5Oy8uDd92Ao+IkMbtdm0BBGw=
+    
