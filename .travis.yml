@@ -7,22 +7,18 @@ notifications:
 node_js:
 - '8'
 before_install:
-- npm install -g npm@5
-- npm install -g greenkeeper-lockfile@1
-jobs:
-  include:
-  - stage: test
-    script:
-    - npm run lint
-    - npm run test
-    - npm run compile-prod
-    - npm run is-es5
-    before_script: greenkeeper-lockfile-update
-    after_script: greenkeeper-lockfile-upload
-  - stage: gh-pages
-    if: branch = master
-    script:
-    - npm run deploy-storybook-ci
+- npm install -g npm@latest
+install:
+- npm install
+script:
+- npm run lint
+- npm run test
+- npm run compile-prod
+- npm run is-es5
+after_success:
+- npm run semantic-release
+- npm run deploy-storybook-ci
+- codecov
 deploy:
   api_key:
     # NPM_TOKEN
