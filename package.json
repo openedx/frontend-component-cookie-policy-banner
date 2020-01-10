@@ -81,7 +81,7 @@
     "eslint": "^4.19.1",
     "eslint-config-edx": "^4.0.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "husky": "^0.14.3",
+    "husky": "^4.0.6",
     "jest": "^22.4.3",
     "jest-environment-jsdom": "^23.0.0",
     "jest-environment-jsdom-global": "^1.0.3",
