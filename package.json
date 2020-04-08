@@ -84,7 +84,7 @@
     "husky": "^0.14.3",
     "jest": "^22.4.3",
     "jest-environment-jsdom": "^23.0.0",
-    "jest-environment-jsdom-global": "^1.0.3",
+    "jest-environment-jsdom-global": "^2.0.2",
     "node-sass": "^4.12.0",
     "node-sass-import": "^2.0.1",
     "react": "^16.3.0",
