@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "config:base",
+    ":automergeLinters",
+    ":automergeTesters",
+    ":automergeMinor",
+    ":semanticCommits"
+  ],
+  "rebaseStalePrs": true
+}
