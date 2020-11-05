@@ -62,7 +62,7 @@
     "@storybook/addon-a11y": "3.4.0",
     "@storybook/addon-actions": "3.4.0",
     "@storybook/addon-centered": "3.4.0",
-    "@storybook/addon-console": "1.0.0",
+    "@storybook/addon-console": "1.2.2",
     "@storybook/addon-info": "3.4.0",
     "@storybook/addon-options": "3.4.0",
     "@storybook/addon-storyshots": "3.4.0",
