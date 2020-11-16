@@ -101,6 +101,7 @@
   },
   "jest": {
     "testEnvironment": "jest-environment-jsdom-global",
+    "testURL": "http://localhost/",
     "setupFiles": [
       "./src/setupTest.js"
     ],
