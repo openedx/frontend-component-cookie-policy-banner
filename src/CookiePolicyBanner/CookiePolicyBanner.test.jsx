@@ -28,6 +28,7 @@ describe('CookiePolicyBanner', () => {
   const expectedLanguageCode = ENGLISH_LANGUAGE_CODE;
   const expectedWrapperAriaLabel = IETF_TAGS_TO_CONTAINER_ROLE_LABEL[expectedTag];
   const expectedPolicyHTML = 'foobar';
+  // eslint-disable-next-line
   const expectedDialog = <span dangerouslySetInnerHTML={{ __html: expectedPolicyHTML }} />;
 
   createHasViewedCookieBanner.mockImplementation(() => {});
