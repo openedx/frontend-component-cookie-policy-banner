@@ -56,7 +56,7 @@ class CookieBanner extends Component {
           aria-live="polite"
         >
           <StatusAlert
-            className={['edx-cookie-banner']}
+            className="edx-cookie-banner"
             open={this.state.open}
             closeButtonAriaLabel={IETF_TAGS_TO_CLOSE_BUTTON_LABEL[ietfTag]}
             dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag) }} />)}

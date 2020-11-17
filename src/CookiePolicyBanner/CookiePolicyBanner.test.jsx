@@ -50,7 +50,7 @@ describe('CookiePolicyBanner', () => {
   };
 
   const isValidStatusAlert = ({ statusAlert, open }) => {
-    expect(statusAlert.prop('className')).toEqual(['edx-cookie-banner']);
+    expect(statusAlert.prop('className')).toEqual('edx-cookie-banner');
     expect(statusAlert.prop('open')).toEqual(open);
     expect(statusAlert.prop('dialog').type).toEqual(expectedDialog.type);
     expect(statusAlert.prop('dialog').props).toEqual(expectedDialog.props);

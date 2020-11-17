@@ -1,3 +1,7 @@
+/* Only load the font we're using */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap");
+@import "@edx/brand-edx.org/paragon/variables";
+
 $cookie-banner-background-color: #f2f8fd !default;
 $cookie-banner-text-color: #4e4e4e !default;
 $cookie-banner-cta-base: #0075b4 !default;
@@ -11,7 +15,7 @@ $cookie-banner-cta-hover: #075683 !default;
   text-align: left;
   line-height: 1.5;
   font: {
-    family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+    family: $font-family-sans-serif;
     size: 1rem;
     weight: 400;
   }
