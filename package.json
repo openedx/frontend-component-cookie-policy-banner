@@ -79,7 +79,7 @@
     "enzyme-adapter-react-16": "1.15.5",
     "es-check": "2.3.0",
     "eslint": "4.19.1",
-    "eslint-config-edx": "4.0.3",
+    "eslint-config-edx": "4.0.4",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "husky": "0.14.3",
     "jest": "22.4.3",
