@@ -35,10 +35,20 @@ const SomeWrappingComponent = () => (
 
 As noted in a comment in the previous code example, you can import the styles associated with the `CookiePolicyBanner` component directly (if this is supported by your `webpack` config) or by importing the sass file as part of one of your existing sass files (probably where your other third-party sass files are imported).
 
+
+Requirement: | The `CookiePolicyBanner` sass file assumes the presence of an @edx/brand theme
+:---: | :---
+
 ```sass
 // base.scss
 @import 'thirdPartySass';
 @import 'anotherThirdPartySass';
+
+// Theme styles
+@import '@edx/brand/paragon/fonts';
+@import '@edx/brand/paragon/variables';
+
+// Cookie Policy Banner style
 @import '@edx/frontend-component-cookie-policy-banner/build/frontend-component-cookie-policy-banner';
 ```
 
