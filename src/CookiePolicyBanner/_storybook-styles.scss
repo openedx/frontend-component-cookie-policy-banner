@@ -1,0 +1,5 @@
+/* Base styles the banner assumes are already present when used */
+@import '@edx/brand-edx.org/paragon/fonts';
+@import "@edx/brand-edx.org/paragon/variables";
+
+@import '_cookie-policy-banner.scss';
