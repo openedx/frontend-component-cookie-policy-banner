@@ -29,6 +29,10 @@ class CookieBanner extends Component {
     this.toggleDisplay(!hasViewedCookieBanner());
   }
 
+  componentDidUpdate() {
+    document.getElementsByClassName('btn')[0].blur();
+  }
+
   onClose(event) {
     this.setState({ open: false }, () => {
       createHasViewedCookieBanner();
