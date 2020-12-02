@@ -55,6 +55,10 @@
     "react-dom": "^16.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-angular": "11.0.0",
     "@commitlint/prompt": "11.0.0",
@@ -69,10 +73,6 @@
     "@storybook/addons": "3.4.12",
     "@storybook/react": "4.1.18",
     "@storybook/storybook-deployer": "2.8.7",
-    "babel-cli": "6.26.0",
-    "babel-core": "6.26.3",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-react": "6.24.1",
     "codecov": "3.0.0",
     "copyfiles": "2.4.1",
     "enzyme": "3.3.0",
@@ -95,7 +95,7 @@
     "source-map-loader": "1.1.2",
     "style-loader": "0.23.1",
     "travis-deploy-once": "5.0.11",
-    "webpack": "5.9.0",
+    "webpack": "4.44.1",
     "webpack-build-notifier": "0.1.32",
     "webpack-cli": "2.1.5"
   },
