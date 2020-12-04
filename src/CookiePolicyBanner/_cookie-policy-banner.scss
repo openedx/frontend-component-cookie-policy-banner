@@ -82,7 +82,7 @@ $font-family-sans-serif: Arial, sans-serif !default;
     .btn {
       padding: 4px;
 
-      @include media-breakpoint-up(sm) {
+      @media (min-width: 576px)  {
         padding: 0.75rem 1.25rem;
       }
     }
