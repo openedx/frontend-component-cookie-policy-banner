@@ -30,7 +30,11 @@ class CookieBanner extends Component {
   }
 
   componentDidUpdate() {
-    document.querySelectorAll('.edx-cookie-banner .btn')[0].blur();
+    if (this.state.open === true) {
+      if (document.querySelectorAll('.edx-cookie-banner .btn') && document.querySelectorAll('.edx-cookie-banner .btn').length > 0) {
+        document.querySelectorAll('.edx-cookie-banner .btn')[0].blur();
+      }
+    }
   }
 
   onClose(event) {
