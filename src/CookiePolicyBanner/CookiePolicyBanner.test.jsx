@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { StatusAlert } from '@edx/paragon';
+import StatusAlert from '../StatusAlert';
 
 import CookiePolicyBanner from './';
 import {
@@ -26,10 +26,13 @@ describe('CookiePolicyBanner', () => {
 
   const expectedTag = ENGLISH_IETF_TAG;
   const expectedLanguageCode = ENGLISH_LANGUAGE_CODE;
-  const expectedWrapperAriaLabel = IETF_TAGS_TO_CONTAINER_ROLE_LABEL[expectedTag];
+  const expectedWrapperAriaLabel =
+    IETF_TAGS_TO_CONTAINER_ROLE_LABEL[expectedTag];
   const expectedPolicyHTML = 'foobar';
   // eslint-disable-next-line
-  const expectedDialog = <span dangerouslySetInnerHTML={{ __html: expectedPolicyHTML }} />;
+  const expectedDialog = (
+    <span dangerouslySetInnerHTML={{ __html: expectedPolicyHTML }} />
+  );
 
   createHasViewedCookieBanner.mockImplementation(() => {});
   getIETFTag.mockImplementation(() => expectedTag);

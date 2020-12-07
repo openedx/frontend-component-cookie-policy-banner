@@ -1,19 +1,18 @@
 /* eslint-disable react/no-danger */
-import React, { Component } from 'react';
-import { StatusAlert } from '@edx/paragon';
 import PropTypes from 'prop-types';
-
+import React, { Component } from 'react';
 import {
+  getPolicyHTML,
   IETF_TAGS_TO_CLOSE_BUTTON_LABEL,
   IETF_TAGS_TO_CONTAINER_ROLE_LABEL,
   IETF_TAGS_TO_LANGUAGE_CODE,
-  getPolicyHTML,
 } from '../constants';
+import StatusAlert from '../StatusAlert';
 import {
+  createHasViewedCookieBanner,
   getIETFTag,
   getIETFTagFromLanguageCode,
   hasViewedCookieBanner,
-  createHasViewedCookieBanner,
 } from '../utilities';
 
 class CookieBanner extends Component {
@@ -31,7 +30,10 @@ class CookieBanner extends Component {
 
   componentDidUpdate() {
     if (this.state.open === true) {
-      if (document.querySelectorAll('.edx-cookie-banner .btn') && document.querySelectorAll('.edx-cookie-banner .btn').length > 0) {
+      if (
+        document.querySelectorAll('.edx-cookie-banner .btn') &&
+        document.querySelectorAll('.edx-cookie-banner .btn').length > 0
+      ) {
         document.querySelectorAll('.edx-cookie-banner .btn')[0].blur();
       }
     }
@@ -51,8 +53,9 @@ class CookieBanner extends Component {
   render() {
     const { languageCode } = this.props;
     const { open } = this.state;
-    const ietfTag = languageCode ?
-      getIETFTagFromLanguageCode(languageCode) : getIETFTag();
+    const ietfTag = languageCode
+      ? getIETFTagFromLanguageCode(languageCode)
+      : getIETFTag();
 
     if (open) {
       return (
@@ -67,7 +70,11 @@ class CookieBanner extends Component {
             className="edx-cookie-banner"
             open={this.state.open}
             closeButtonAriaLabel={IETF_TAGS_TO_CLOSE_BUTTON_LABEL[ietfTag]}
-            dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag) }} />)}
+            dialog={
+              <span
+                dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag) }}
+              />
+            }
             onClose={this.onClose}
           />
         </div>
