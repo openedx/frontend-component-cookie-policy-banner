@@ -73,8 +73,18 @@ $font-family-sans-serif: Arial, sans-serif !default;
     }
 
     .alert-dialog {
-      margin-right: 30px;
+      margin: auto;
       color: $cookie-banner-text-color;
+      text-align: center;
+      max-width: 800px;
+    }
+
+    .btn {
+      padding: 4px;
+
+      @media (min-width: 576px)  {
+        padding: 0.75rem 1.25rem;
+      }
     }
 
     .btn.close {

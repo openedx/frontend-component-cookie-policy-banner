@@ -60,6 +60,8 @@ Requirement: | The `CookiePolicyBanner` sass file assumes the presence of an @ed
 
 Executing
 
+As of Nov 2020, Storybook isn't compatible with webpack 5, so before running change your webpack version to 4.44.1.
+
 ```bash
 npm run start
 ```

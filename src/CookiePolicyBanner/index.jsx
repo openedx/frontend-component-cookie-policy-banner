@@ -29,6 +29,14 @@ class CookieBanner extends Component {
     this.toggleDisplay(!hasViewedCookieBanner());
   }
 
+  componentDidUpdate() {
+    if (this.state.open === true) {
+      if (document.querySelectorAll('.edx-cookie-banner .btn') && document.querySelectorAll('.edx-cookie-banner .btn').length > 0) {
+        document.querySelectorAll('.edx-cookie-banner .btn')[0].blur();
+      }
+    }
+  }
+
   onClose(event) {
     this.setState({ open: false }, () => {
       createHasViewedCookieBanner();

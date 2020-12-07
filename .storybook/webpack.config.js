@@ -20,7 +20,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['env'],
+              presets: ['@babel/preset-env'],
             },
           },
           { loader: 'source-map-loader' },
@@ -43,11 +43,13 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: [
-                path.join(__dirname, '../src/utils'),
-                path.join(__dirname, '../node_modules'),
-              ],
-              sourceMap: true,
+              sassOptions: {
+                includePaths: [
+                  path.join(__dirname, '../src/utils'),
+                  path.join(__dirname, '../node_modules'),
+                ],
+                sourceMap: true,
+              }
             },
           },
         ],
