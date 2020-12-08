@@ -1,0 +1,36 @@
+name: Node.js CI
+
+on:
+  push:
+    branches-ignore: ['master']
+  pull_request:
+    branches: [ 'master' ]
+    types: ['opened']
+jobs:
+  kill-previous:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kill previous checks
+        uses: n1hility/cancel-previous-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+  script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Install
+        run: npm install
+      - name: Lint
+        run: npm run lint
+      - name: Compile prod
+        run: npm run compile-prod
+      - name: Check es-5
+        run: npm run is-es5
+      - name: semantic release
+        run: npm run semantic-release
+      - name: deploy storybook CI
+        run: npm run deploy-storybook-ci
