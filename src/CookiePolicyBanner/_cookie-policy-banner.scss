@@ -1,11 +1,10 @@
-@import "@edx/brand-edx.org/paragon/variables";
-
 $cookie-banner-background-color: #f2f8fd !default;
 $cookie-banner-text-color: #4e4e4e !default;
 $cookie-banner-cta-base: #0075b4 !default;
 $cookie-banner-cta-hover: #075683 !default;
 
 $font-family-sans-serif: Arial, sans-serif !default;
+$small-font-size: 14px;
 
 .edx-cookie-banner-wrapper {
   background: $cookie-banner-background-color;
