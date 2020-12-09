@@ -20,7 +20,7 @@ $font-family-sans-serif: Arial, sans-serif !default;
 
   .alert {
     position: relative;
-    padding: 0.75rem 1.25rem;
+    padding: 8px 20px;
   }
 
   .alert-dismissible {
@@ -37,7 +37,7 @@ $font-family-sans-serif: Arial, sans-serif !default;
       line-height: 1;
       font: {
         size: 1.5rem;
-        weight: 700;
+        weight: 500;
       }
     }
 
@@ -55,8 +55,6 @@ $font-family-sans-serif: Arial, sans-serif !default;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    max-width: 1200px;
-    min-width: 0;
     margin: 0 auto;
     background: inherit;
     border: none;
@@ -76,15 +74,8 @@ $font-family-sans-serif: Arial, sans-serif !default;
       margin: auto;
       color: $cookie-banner-text-color;
       text-align: center;
+      font-size: $small-font-size;
       max-width: 800px;
-    }
-
-    .btn {
-      padding: 4px;
-
-      @media (min-width: 576px)  {
-        padding: 0.75rem 1.25rem;
-      }
     }
 
     .btn.close {
@@ -95,6 +86,8 @@ $font-family-sans-serif: Arial, sans-serif !default;
         color: $cookie-banner-cta-hover;
         cursor: pointer;
       }
+
+      padding: 5px;
     }
   }
 }
