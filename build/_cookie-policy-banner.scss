@@ -1,0 +1,93 @@
+$cookie-banner-background-color: #f2f8fd !default;
+$cookie-banner-text-color: #4e4e4e !default;
+$cookie-banner-cta-base: #0075b4 !default;
+$cookie-banner-cta-hover: #075683 !default;
+
+$font-family-sans-serif: Arial, sans-serif !default;
+$small-font-size: 14px;
+
+.edx-cookie-banner-wrapper {
+  background: $cookie-banner-background-color;
+  box-sizing: border-box;
+
+  /** Base Styles - start **/
+  text-align: left;
+  line-height: 1.5;
+  font: {
+    family: $font-family-sans-serif;
+    size: 1rem;
+    weight: 400;
+  }
+
+  .alert {
+    position: relative;
+    padding: 8px 20px;
+  }
+
+  .alert-dismissible {
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.75rem 1.25rem;
+      background: transparent;
+      border: 0;
+      text-shadow: 0 1px 0 #fff;
+      opacity: 0.5;
+      float: right;
+      line-height: 1;
+      font: {
+        size: 1.5rem;
+        weight: 500;
+      }
+    }
+
+    .btn {
+      display: inline-block;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+  }
+  /** Base Styles - end **/
+
+
+  .edx-cookie-banner {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    background: inherit;
+    border: none;
+
+    .policy-link {
+      color: $cookie-banner-cta-base;
+      text-decoration: underline;
+
+      &:focus,
+      &:hover {
+        color: $cookie-banner-cta-hover;
+        border: none;
+      }
+    }
+
+    .alert-dialog {
+      margin: auto;
+      color: $cookie-banner-text-color;
+      text-align: center;
+      max-width: 800px;
+      font-size: $small-font-size;
+    }
+
+    .btn.close {
+      padding: 4px;
+      color: $cookie-banner-cta-base;
+
+      &:focus,
+      &:hover {
+        color: $cookie-banner-cta-hover;
+        cursor: pointer;
+      }
+    }
+  }
+}
