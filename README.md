@@ -51,6 +51,16 @@ Requirement: | The `CookiePolicyBanner` sass file assumes the presence of an @ed
 // Cookie Policy Banner style
 @import '@edx/frontend-component-cookie-policy-banner/build/frontend-component-cookie-policy-banner';
 ```
+## Local Testing With Other Repositories
+The current build is not included in the git repository so in order to test the component with dependent repositories, you will have to first build the component by running `npm run prepublishOnly`, then remove `build` and `build/Release` from `.gitignore` and commit the results to your branch. **Make sure to remove the change to .gitignore before merging!**
+
+Once you've committed and pushed the build to your branch, you can bring it into a dependent repository's package.json by adding
+```
+"@edx/frontend-component-cookie-policy-banner": "git+https://github.com/edx/frontend-component-cookie-policy-banner#<my_branch_name>"
+```
+and running `npm install`.
+
+Note that whenever you make changes on your branch, you will have to rebuild, commit push the resulting build artifacts, and re-run `npm install` in the dependent repository.
 
 ## Storybook
 
