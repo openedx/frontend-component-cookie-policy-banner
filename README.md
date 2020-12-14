@@ -3,6 +3,9 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/edx/frontend-component-cookie-policy-banner.svg)](https://greenkeeper.io/)
 [![npm](https://img.shields.io/npm/v/@edx/frontend-component-cookie-policy-banner.svg)](https://www.npmjs.com/package/@edx/frontend-component-cookie-policy-banner)
 [![npm](https://img.shields.io/npm/dt/@edx/frontend-component-cookie-policy-banner.svg)](https://www.npmjs.com/package/@edx/frontend-component-cookie-policy-banner)
+[![license](https://img.shields.io/npm/l/@edx/frontend-component-cookie-policy-banner.svg)](https://github.com/edx/frontend-component-cookie-policy-banner.svg/blob/master/LICENSE)
+
+We are not accepting public contributions to this repo at this time. 
 
 ## Introduction
 
@@ -67,3 +70,13 @@ npm run start
 ```
 
 locally builds the Storybook for the `CookiePolicyBanner` component on port `3003`.
+
+## edX Code of Conduct
+[`https://open.edx.org/code-of-conduct/`](https://open.edx.org/code-of-conduct/)
+
+## Contact
+You can contact the edx open-source team at oscm@edx.org.
+
+## Security reporting information
+Please do not report security issues in public. Send security concerns via email to security@edx.org.
+
