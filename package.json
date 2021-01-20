@@ -76,7 +76,7 @@
     "codecov": "3.0.0",
     "copyfiles": "2.4.1",
     "enzyme": "3.3.0",
-    "enzyme-adapter-react-16": "1.15.5",
+    "enzyme-adapter-react-16": "1.15.6",
     "es-check": "5.2.0",
     "eslint": "4.19.1",
     "eslint-config-edx": "4.0.4",
