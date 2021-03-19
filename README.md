@@ -34,6 +34,12 @@ const SomeWrappingComponent = () => (
 );
 ```
 
+## Updating the Repo
+
+We use [`semantic-release`](https://github.com/semantic-release/semantic-release) to update the package on NPM.
+
+Please follow semantic-release guidelines on how to structure your commit message when merging a change.
+
 ### Styling
 
 As noted in a comment in the previous code example, you can import the styles associated with the `CookiePolicyBanner` component directly (if this is supported by your `webpack` config) or by importing the sass file as part of one of your existing sass files (probably where your other third-party sass files are imported).
