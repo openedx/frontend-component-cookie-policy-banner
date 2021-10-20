@@ -95,7 +95,7 @@
     "source-map-loader": "3.0.0",
     "style-loader": "3.3.0",
     "travis-deploy-once": "5.0.11",
-    "webpack": "5.58.2",
+    "webpack": "5.59.0",
     "webpack-build-notifier": "2.3.0",
     "webpack-cli": "4.9.1"
   },
