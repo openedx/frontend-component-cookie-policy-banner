@@ -1,5 +1,5 @@
 {
-  "extends": ["@edxeslint-config"],
+  "extends": ["@edx/eslint-config"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
