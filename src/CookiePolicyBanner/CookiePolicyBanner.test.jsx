@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { StatusAlert } from '@edx/paragon';
 
-import CookiePolicyBanner from './';
+import CookiePolicyBanner from '.';
 import {
   ENGLISH_IETF_TAG,
   ENGLISH_LANGUAGE_CODE,
