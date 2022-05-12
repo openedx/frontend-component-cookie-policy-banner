@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint-config-edx"],
+  "extends": ["@edx/eslint-config"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -8,12 +8,14 @@
   "env": {
     "jest": true
   },
-  "overrides": {
-    "files": ["*.stories.jsx", "*.test.jsx"],
-    "rules": {
-      "import/no-extraneous-dependencies": "off"
+  "overrides": [
+    {
+      "files": ["*.stories.jsx", "*.test.jsx"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
     }
-  },
+  ],
   "globals": {
     "jsdom": true
   }

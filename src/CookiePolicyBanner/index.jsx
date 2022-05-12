@@ -51,8 +51,8 @@ class CookieBanner extends Component {
   render() {
     const { languageCode } = this.props;
     const { open } = this.state;
-    const ietfTag = languageCode ?
-      getIETFTagFromLanguageCode(languageCode) : getIETFTag();
+    const ietfTag = languageCode
+      ? getIETFTagFromLanguageCode(languageCode) : getIETFTag();
 
     if (open) {
       return (
