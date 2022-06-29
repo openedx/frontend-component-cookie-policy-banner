@@ -1,6 +1,5 @@
 const path = require('path');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   plugins: [
