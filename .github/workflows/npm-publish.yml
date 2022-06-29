@@ -32,9 +32,6 @@ jobs:
     - name: Create Build
       run: npm run compile-prod
 
-    - name: Verify es5
-      run: npm run is-es5
-
     - name: Run Coverage
       uses: codecov/codecov-action@v2
 
