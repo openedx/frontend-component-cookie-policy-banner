@@ -11,6 +11,7 @@ const EXTRA = 'EXTRA';
 const QA = 'QA';
 const STAGE = 'STAGE';
 const GH_PAGES = 'GH_PAGES';
+const SITE_NAME = 'edX'
 const STAGE_ENVIRONMENTS = Object.freeze({
   [ACCEPTANCE]: { baseURL: 'acceptance.edx.org', prefix: 'acceptance' },
   [DEV]: { baseURL: 'dev.edx.org', prefix: 'dev' },
@@ -45,11 +46,11 @@ const getPolicyHTML = (tag) => {
 
   if (tag === SPANISH_IETF_TAG) {
     const linkOpen = '<a href="https://edx.org/es/edx-privacy-policy" class="policy-link" target = "_blank">';
-    return `edX y sus Miembros usan cookies y otras tecnologías de seguimiento para fines de rendimiento, análisis y marketing. Al usar este sitio web, aceptas este uso. Obtén más información sobre estas tecnologías en la ${linkOpen}Política de privacidad${linkClose}.`;
+    return `${SITE_NAME} y sus Miembros usan cookies y otras tecnologías de seguimiento para fines de rendimiento, análisis y marketing. Al usar este sitio web, aceptas este uso. Obtén más información sobre estas tecnologías en la ${linkOpen}Política de privacidad${linkClose}.`;
   }
 
   const linkOpen = '<a href="https://edx.org/edx-privacy-policy" class="policy-link" target = "_blank">';
-  return `edX and its Members use cookies and other tracking technologies for performance, analytics, and marketing purposes. By using this website, you accept this use. Learn more about these technologies in the ${linkOpen}Privacy Policy${linkClose}.`;
+  return `{SITE_NAME} and its Members use cookies and other tracking technologies for performance, analytics, and marketing purposes. By using this website, you accept this use. Learn more about these technologies in the ${linkOpen}Privacy Policy${linkClose}.`;
 };
 
 const COOKIE_POLICY_VIEWED_NAME = 'edx-cookie-policy-viewed';
@@ -69,4 +70,5 @@ export {
   LOCALHOST,
   COOKIE_POLICY_VIEWED_NAME,
   STAGE_ENVIRONMENTS,
+  SITE_NAME,
 };
