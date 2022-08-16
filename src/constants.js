@@ -11,7 +11,7 @@ const EXTRA = 'EXTRA';
 const QA = 'QA';
 const STAGE = 'STAGE';
 const GH_PAGES = 'GH_PAGES';
-const SITE_NAME = 'edX'
+const SITE_NAME = 'edX';
 const STAGE_ENVIRONMENTS = Object.freeze({
   [ACCEPTANCE]: { baseURL: 'acceptance.edx.org', prefix: 'acceptance' },
   [DEV]: { baseURL: 'dev.edx.org', prefix: 'dev' },
@@ -22,7 +22,10 @@ const STAGE_ENVIRONMENTS = Object.freeze({
 });
 
 const IETF_TAGS = Object.freeze([ENGLISH_IETF_TAG, SPANISH_IETF_TAG]);
-const LANGUAGE_CODES = Object.freeze([ENGLISH_LANGUAGE_CODE, SPANISH_LANGUAGE_CODE]);
+const LANGUAGE_CODES = Object.freeze([
+  ENGLISH_LANGUAGE_CODE,
+  SPANISH_LANGUAGE_CODE,
+]);
 
 const IETF_TAGS_TO_CONTAINER_ROLE_LABEL = Object.freeze({
   [ENGLISH_IETF_TAG]: 'Notice about use of cookies on edx.org.',
@@ -45,12 +48,14 @@ const getPolicyHTML = (tag) => {
   const linkClose = '</a>';
 
   if (tag === SPANISH_IETF_TAG) {
-    const linkOpen = '<a href="https://edx.org/es/edx-privacy-policy" class="policy-link" target = "_blank">';
+    const linkOpen =
+      '<a href="https://edx.org/es/edx-privacy-policy" class="policy-link" target = "_blank">';
     return `${SITE_NAME} y sus Miembros usan cookies y otras tecnologías de seguimiento para fines de rendimiento, análisis y marketing. Al usar este sitio web, aceptas este uso. Obtén más información sobre estas tecnologías en la ${linkOpen}Política de privacidad${linkClose}.`;
   }
 
-  const linkOpen = '<a href="https://edx.org/edx-privacy-policy" class="policy-link" target = "_blank">';
-  return `{SITE_NAME} and its Members use cookies and other tracking technologies for performance, analytics, and marketing purposes. By using this website, you accept this use. Learn more about these technologies in the ${linkOpen}Privacy Policy${linkClose}.`;
+  const linkOpen =
+    '<a href="https://edx.org/edx-privacy-policy" class="policy-link" target = "_blank">';
+  return `${SITE_NAME} and its Members use cookies and other tracking technologies for performance, analytics, and marketing purposes. By using this website, you accept this use. Learn more about these technologies in the ${linkOpen}Privacy Policy${linkClose}.`;
 };
 
 const COOKIE_POLICY_VIEWED_NAME = 'edx-cookie-policy-viewed';
