@@ -3,7 +3,7 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/edx/frontend-component-cookie-policy-banner.svg)](https://greenkeeper.io/)
 [![npm](https://img.shields.io/npm/v/@edx/frontend-component-cookie-policy-banner.svg)](https://www.npmjs.com/package/@edx/frontend-component-cookie-policy-banner)
 [![npm](https://img.shields.io/npm/dt/@edx/frontend-component-cookie-policy-banner.svg)](https://www.npmjs.com/package/@edx/frontend-component-cookie-policy-banner)
-[![license](https://img.shields.io/npm/l/@edx/frontend-component-cookie-policy-banner.svg)](https://github.com/edx/frontend-component-cookie-policy-banner.svg/blob/master/LICENSE)
+[![license](https://img.shields.io/npm/l/@edx/frontend-component-cookie-policy-banner.svg)](https://github.com/openedx/frontend-component-cookie-policy-banner.svg/blob/master/LICENSE)
 
 We are not accepting public contributions to this repo at this time. 
 
@@ -65,7 +65,7 @@ The current build is not included in the git repository so in order to test the 
 
 Once you've committed and pushed the build to your branch, you can bring it into a dependent repository's package.json by adding
 ```
-"@edx/frontend-component-cookie-policy-banner": "git+https://github.com/edx/frontend-component-cookie-policy-banner#<my_branch_name>"
+"@edx/frontend-component-cookie-policy-banner": "git+https://github.com/openedx/frontend-component-cookie-policy-banner#<my_branch_name>"
 ```
 and running `npm install`.
 

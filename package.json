@@ -10,7 +10,7 @@
   "license": "AGPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/edx/frontend-component-cookie-policy-banner"
+    "url": "https://github.com/openedx/frontend-component-cookie-policy-banner"
   },
   "keywords": [
     "edx",
