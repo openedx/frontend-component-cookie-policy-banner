@@ -21,7 +21,6 @@
     "react component"
   ],
   "scripts": {
-    "codecov": "codecov",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "build-css": "node-sass src/CookiePolicyBanner/_cookie-policy-banner.scss -o build --importer node_modules/node-sass-import",
     "build-styles": "npm run build-css && npm run copy-scss",
@@ -75,7 +74,6 @@
     "@storybook/addons": "6.1.16",
     "@storybook/react": "6.1.16",
     "@storybook/storybook-deployer": "2.8.10",
-    "codecov": "3.8.3",
     "copyfiles": "2.4.1",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.15.6",
