@@ -45,14 +45,14 @@ const getPolicyHTML = (tag) => {
 
   if (tag === SPANISH_IETF_TAG) {
     const linkOpen = '<a href="https://edx.org/es/edx-privacy-policy" class="policy-link" target = "_blank">';
-    return `edX y sus Miembros usan cookies y otras tecnologías de seguimiento para fines de rendimiento, análisis y marketing. Al usar este sitio web, aceptas este uso. Obtén más información sobre estas tecnologías en la ${linkOpen}Política de privacidad${linkClose}.`;
+    return `Hemos actualizado nuestra ${linkOpen}Política de Privacidad${linkClose} para mejor reflejar cómo coleccionamos, usamos y compartimos sus datos.`;
   }
 
   const linkOpen = '<a href="https://edx.org/edx-privacy-policy" class="policy-link" target = "_blank">';
-  return `edX and its Members use cookies and other tracking technologies for performance, analytics, and marketing purposes. By using this website, you accept this use. Learn more about these technologies in the ${linkOpen}Privacy Policy${linkClose}.`;
+  return `We've updated our ${linkOpen}Privacy Policy${linkClose} to better reflect how we collect, use, and share your information.`;
 };
 
-const COOKIE_POLICY_VIEWED_NAME = 'edx-cookie-policy-viewed';
+const COOKIE_POLICY_VIEWED_NAME = 'edx-updated-cookie-policy-viewed';
 
 export {
   ENGLISH_IETF_TAG,
