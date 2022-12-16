@@ -61,6 +61,17 @@ describe('utilities', () => {
       expect(getCookieCreationData()).toEqual(expected);
     });
 
+    it('localhost cookie creation data with overridden cookie name', () => {
+      jsdom.reconfigure({ url: `http://${LOCALHOST}:8080/` });
+      const expected = {
+        cookieName: 'localhost-edx-updated-cookie-policy-viewed',
+        domain: 'localhost',
+        path: '/',
+        maxAge: 2147483647,
+      };
+      expect(getCookieCreationData('edx-updated-cookie-policy-viewed')).toEqual(expected);
+    });
+
     it('stage cookie creation data', () => {
       const stageEnvironment = STAGE_ENVIRONMENTS.STAGE;
       jsdom.reconfigure({ url: `https://www.${stageEnvironment.baseURL}` });
@@ -73,6 +84,18 @@ describe('utilities', () => {
       expect(getCookieCreationData()).toEqual(expected);
     });
 
+    it('stage cookie creation data with overridden cookie name', () => {
+      const stageEnvironment = STAGE_ENVIRONMENTS.STAGE;
+      jsdom.reconfigure({ url: `https://www.${stageEnvironment.baseURL}` });
+      const expected = {
+        cookieName: 'stage-edx-updated-cookie-policy-viewed',
+        domain: '.stage.edx.org',
+        path: '/',
+        maxAge: 2147483647,
+      };
+      expect(getCookieCreationData('edx-updated-cookie-policy-viewed')).toEqual(expected);
+    });
+
     it('prod cookie creation data', () => {
       jsdom.reconfigure({ url: 'https://www.edx.org/' });
       const expected = {
@@ -82,6 +105,17 @@ describe('utilities', () => {
         maxAge: 2147483647,
       };
       expect(getCookieCreationData()).toEqual(expected);
+    });
+
+    it('prod cookie creation data with overridden cookie name', () => {
+      jsdom.reconfigure({ url: 'https://www.edx.org/' });
+      const expected = {
+        cookieName: 'prod-edx-updated-cookie-policy-viewed',
+        domain: '.edx.org',
+        path: '/',
+        maxAge: 2147483647,
+      };
+      expect(getCookieCreationData('edx-updated-cookie-policy-viewed')).toEqual(expected);
     });
   });
 
