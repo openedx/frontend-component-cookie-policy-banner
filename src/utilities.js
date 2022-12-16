@@ -24,18 +24,19 @@ const firstMatchingStageEnvironment = () => {
 // Setting maxAge to 2^31 -1
 // because Number.SAFE_MAX_INTEGER does not get processed properly by the browser
 // nor does the max Date defined in http://www.ecma-international.org/ecma-262/5.1/#sec-15.9.1.1
-const buildCookieCreationData = ({ prefix, domain }) => ({
-  cookieName: `${prefix}-${COOKIE_POLICY_VIEWED_NAME}`,
+const buildCookieCreationData = ({ prefix, domain, cookieName = null }) => ({
+  cookieName: `${prefix}-${cookieName || COOKIE_POLICY_VIEWED_NAME}`,
   domain,
   path: '/',
   maxAge: 2147483647,
 });
 
-const getCookieCreationData = () => {
+const getCookieCreationData = (cookieName = null) => {
   if (window.location.hostname.indexOf(LOCALHOST) >= 0) {
     return buildCookieCreationData({
       prefix: LOCALHOST,
       domain: LOCALHOST,
+      cookieName,
     });
   }
 
@@ -45,6 +46,7 @@ const getCookieCreationData = () => {
     return buildCookieCreationData({
       prefix: stageEnvironment.prefix,
       domain: `.${stageEnvironment.baseURL}`,
+      cookieName,
     });
   }
 
@@ -52,6 +54,7 @@ const getCookieCreationData = () => {
     return buildCookieCreationData({
       prefix: 'prod',
       domain: '.edx.org',
+      cookieName,
     });
   }
 
@@ -83,8 +86,8 @@ const getIETFTagFromLanguageCode = (languageCode) => {
   return ietfTag;
 };
 
-const createHasViewedCookieBanner = () => {
-  const cookieCreationData = getCookieCreationData();
+const createHasViewedCookieBanner = (cookieName = null) => {
+  const cookieCreationData = getCookieCreationData(cookieName);
 
   if (!!cookieCreationData
       && !!cookieCreationData.cookieName
@@ -105,8 +108,8 @@ const createHasViewedCookieBanner = () => {
   return false;
 };
 
-const hasViewedCookieBanner = () => {
-  const cookieCreationData = getCookieCreationData();
+const hasViewedCookieBanner = (cookieName = null) => {
+  const cookieCreationData = getCookieCreationData(cookieName);
   return !!cookieCreationData && !!new Cookie().get(cookieCreationData.cookieName);
 };
 
