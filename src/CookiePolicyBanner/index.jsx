@@ -4,6 +4,8 @@ import { StatusAlert } from '@edx/paragon';
 import PropTypes from 'prop-types';
 
 import {
+  ENGLISH_IETF_TAG,
+  SPANISH_IETF_TAG,
   IETF_TAGS_TO_CLOSE_BUTTON_LABEL,
   IETF_TAGS_TO_CONTAINER_ROLE_LABEL,
   IETF_TAGS_TO_LANGUAGE_CODE,
@@ -26,7 +28,7 @@ class CookieBanner extends Component {
   }
 
   componentDidMount() {
-    this.toggleDisplay(!hasViewedCookieBanner());
+    this.toggleDisplay(!hasViewedCookieBanner(this.props.isViewedCookieName));
   }
 
   componentDidUpdate() {
@@ -39,7 +41,7 @@ class CookieBanner extends Component {
 
   onClose(event) {
     this.setState({ open: false }, () => {
-      createHasViewedCookieBanner();
+      createHasViewedCookieBanner(this.props.isViewedCookieName);
       this.props.onClose(event);
     });
   }
@@ -49,7 +51,7 @@ class CookieBanner extends Component {
   }
 
   render() {
-    const { languageCode } = this.props;
+    const { languageCode, policyText } = this.props;
     const { open } = this.state;
     const ietfTag = languageCode
       ? getIETFTagFromLanguageCode(languageCode) : getIETFTag();
@@ -67,7 +69,7 @@ class CookieBanner extends Component {
             className="edx-cookie-banner"
             open={this.state.open}
             closeButtonAriaLabel={IETF_TAGS_TO_CLOSE_BUTTON_LABEL[ietfTag]}
-            dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag) }} />)}
+            dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag, policyText) }} />)}
             onClose={this.onClose}
           />
         </div>
@@ -81,11 +83,18 @@ class CookieBanner extends Component {
 CookieBanner.defaultProps = {
   onClose: () => {},
   languageCode: undefined,
+  policyText: {},
+  isViewedCookieName: null,
 };
 
 CookieBanner.propTypes = {
   onClose: PropTypes.func,
   languageCode: PropTypes.string,
+  policyText: PropTypes.shape({
+    [ENGLISH_IETF_TAG]: PropTypes.string,
+    [SPANISH_IETF_TAG]: PropTypes.string,
+  }),
+  isViewedCookieName: PropTypes.string,
 };
 
 export default CookieBanner;

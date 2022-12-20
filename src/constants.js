@@ -40,7 +40,11 @@ const LANGUAGE_CODE_TO_IETF_TAGS = Object.freeze({
   [SPANISH_LANGUAGE_CODE]: SPANISH_IETF_TAG,
 });
 
-const getPolicyHTML = (tag) => {
+const getPolicyHTML = (tag, overrideText = {}) => {
+  if (overrideText[tag]) {
+    return overrideText[tag];
+  }
+
   const linkClose = '</a>';
 
   if (tag === SPANISH_IETF_TAG) {
