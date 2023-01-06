@@ -33,7 +33,7 @@ jobs:
       run: npm run compile-prod
 
     - name: Run Coverage
-      uses: codecov/codecov-action@v2
+      uses: codecov/codecov-action@v3
 
     - name: Extract branch name
       shell: bash
