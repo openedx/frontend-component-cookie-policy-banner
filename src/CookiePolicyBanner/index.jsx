@@ -71,7 +71,7 @@ class CookieBanner extends Component {
             closeButtonAriaLabel={IETF_TAGS_TO_CLOSE_BUTTON_LABEL[ietfTag]}
             onClose={this.onClose}
           >
-          <span dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag, policyText) }} />
+            <span dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag, policyText) }} />
           </Alert>
         </div>
       );
