@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 import React, { Component } from 'react';
-import { StatusAlert } from '@edx/paragon';
+import { Alert } from '@edx/paragon';
 import PropTypes from 'prop-types';
 
 import {
@@ -65,13 +65,14 @@ class CookieBanner extends Component {
           aria-label={IETF_TAGS_TO_CONTAINER_ROLE_LABEL[ietfTag]}
           aria-live="polite"
         >
-          <StatusAlert
+          <Alert
             className="edx-cookie-banner"
-            open={this.state.open}
+            show={this.state.open}
             closeButtonAriaLabel={IETF_TAGS_TO_CLOSE_BUTTON_LABEL[ietfTag]}
-            dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag, policyText) }} />)}
             onClose={this.onClose}
-          />
+          >
+          <span dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag, policyText) }} />
+          </Alert>
         </div>
       );
     }
