@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { StatusAlert } from '@edx/paragon';
+import { Alert } from '@edx/paragon';
 
 import CookiePolicyBanner from '.';
 import {
@@ -49,9 +49,9 @@ describe('CookiePolicyBanner', () => {
     expect(wrapperDiv.prop('aria-live')).toBe('polite');
   };
 
-  const isValidStatusAlert = ({ statusAlert, open }) => {
-    expect(statusAlert.prop('className')).toEqual('edx-cookie-banner');
-    expect(statusAlert.prop('open')).toEqual(open);
+  const isValidStatusAlert = ({ Alert, show }) => {
+    expect(Alert.prop('className')).toEqual('edx-cookie-banner');
+    expect(Alert.prop('show')).toEqual(show);
     expect(statusAlert.prop('dialog').type).toEqual(expectedDialog.type);
     expect(statusAlert.prop('dialog').props).toEqual(expectedDialog.props);
     expect(statusAlert.prop('onClose')).toEqual(mountedBanner.instance().onClose);
@@ -63,7 +63,7 @@ describe('CookiePolicyBanner', () => {
     const wrapperDiv = mountedBanner.find('div').first();
     isValidWrapperDiv(wrapperDiv);
 
-    const statusAlerts = mountedBanner.find(StatusAlert);
+    const statusAlerts = mountedBanner.find(Alert);
     expect(statusAlerts.length).toBe(1);
 
     const statusAlert = statusAlerts.first();
