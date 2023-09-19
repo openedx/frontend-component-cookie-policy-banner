@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { StatusAlert } from '@edx/paragon';
+import { Alert } from '@edx/paragon';
 
 import CookiePolicyBanner from '.';
 import {
@@ -63,7 +63,7 @@ describe('CookiePolicyBanner', () => {
     const wrapperDiv = mountedBanner.find('div').first();
     isValidWrapperDiv(wrapperDiv);
 
-    const statusAlerts = mountedBanner.find(StatusAlert);
+    const statusAlerts = mountedBanner.find(Alert);
     expect(statusAlerts.length).toBe(1);
 
     const statusAlert = statusAlerts.first();
