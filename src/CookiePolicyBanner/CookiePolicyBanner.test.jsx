@@ -58,7 +58,7 @@ describe('CookiePolicyBanner', () => {
   };
 
   const isOpenBanner = () => {
-    expect(mountedBanner.state('x')).toBe(true);
+    expect(mountedBanner.state('show')).toBe(true);
 
     const wrapperDiv = mountedBanner.find('div').first();
     isValidWrapperDiv(wrapperDiv);
