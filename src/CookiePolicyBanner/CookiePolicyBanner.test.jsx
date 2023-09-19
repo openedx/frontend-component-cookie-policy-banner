@@ -37,7 +37,7 @@ describe('CookiePolicyBanner', () => {
   hasViewedCookieBanner.mockImplementation(() => !isOpen);
 
   const isClosedBanner = () => {
-    expect(mountedBanner.state('show')).toBe(false);
+    expect(mountedBanner.state('open')).toBe(false);
     expect(mountedBanner.html()).toBeNull();
   };
 
