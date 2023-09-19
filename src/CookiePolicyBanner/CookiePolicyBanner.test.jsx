@@ -49,7 +49,7 @@ describe('CookiePolicyBanner', () => {
     expect(wrapperDiv.prop('aria-live')).toBe('polite');
   };
 
-  const isValidStatusAlert = ({ statusAlert, open }) => {
+  const isValidStatusAlert = ({ statusAlert, show }) => {
     expect(statusAlert.prop('className')).toEqual('edx-cookie-banner');
     expect(statusAlert.prop('show')).toEqual(show);
     expect(statusAlert.prop('dialog').type).toEqual(expectedDialog.type);
