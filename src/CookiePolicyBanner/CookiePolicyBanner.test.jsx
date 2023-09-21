@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { Alert } from '@edx/paragon';
 
 import CookiePolicyBanner from '.';
 import {
