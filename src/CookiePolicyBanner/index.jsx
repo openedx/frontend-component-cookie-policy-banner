@@ -24,7 +24,7 @@ class CookieBanner extends Component {
 
     this.onClose = this.onClose.bind(this);
 
-    this.state = { open: false };
+    this.state = { show: false };
   }
 
   componentDidMount() {
@@ -32,7 +32,7 @@ class CookieBanner extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.open === true) {
+    if (this.state.show === true) {
       if (document.querySelectorAll('.edx-cookie-banner .btn') && document.querySelectorAll('.edx-cookie-banner .btn').length > 0) {
         document.querySelectorAll('.edx-cookie-banner .btn')[0].blur();
       }
@@ -40,23 +40,23 @@ class CookieBanner extends Component {
   }
 
   onClose(event) {
-    this.setState({ open: false }, () => {
+    this.setState({ show: false }, () => {
       createHasViewedCookieBanner(this.props.isViewedCookieName);
       this.props.onClose(event);
     });
   }
 
-  toggleDisplay(open) {
-    this.setState({ open });
+  toggleDisplay(show) {
+    this.setState({ show });
   }
 
   render() {
     const { languageCode, policyText } = this.props;
-    const { open } = this.state;
+    const { show } = this.state;
     const ietfTag = languageCode
       ? getIETFTagFromLanguageCode(languageCode) : getIETFTag();
 
-    if (open) {
+    if (show) {
       return (
         <div
           lang={IETF_TAGS_TO_LANGUAGE_CODE[ietfTag]}
@@ -67,7 +67,7 @@ class CookieBanner extends Component {
         >
           <Alert
             className="edx-cookie-banner"
-            show={this.state.open}
+            show={this.state.show}
             closeButtonAriaLabel={IETF_TAGS_TO_CLOSE_BUTTON_LABEL[ietfTag]}
             onClose={this.onClose}
           >

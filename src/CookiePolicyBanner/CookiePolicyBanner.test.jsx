@@ -30,14 +30,13 @@ describe('CookiePolicyBanner', () => {
   const expectedPolicyHTML = 'foobar';
   // eslint-disable-next-line
   const expectedDialog = <span dangerouslySetInnerHTML={{ __html: expectedPolicyHTML }} />;
-
   createHasViewedCookieBanner.mockImplementation(() => {});
   getIETFTag.mockImplementation(() => expectedTag);
   getPolicyHTML.mockImplementation(() => expectedPolicyHTML);
   hasViewedCookieBanner.mockImplementation(() => !isOpen);
 
   const isClosedBanner = () => {
-    expect(mountedBanner.state('open')).toBe(false);
+    expect(mountedBanner.state('show')).toBe(false);
     expect(mountedBanner.html()).toBeNull();
   };
 
@@ -52,22 +51,20 @@ describe('CookiePolicyBanner', () => {
   const isValidStatusAlert = ({ statusAlert, show }) => {
     expect(statusAlert.prop('className')).toEqual('edx-cookie-banner');
     expect(statusAlert.prop('show')).toEqual(show);
-    expect(statusAlert.prop('dialog').type).toEqual(expectedDialog.type);
-    expect(statusAlert.prop('dialog').props).toEqual(expectedDialog.props);
+    expect(statusAlert.prop('children').type).toEqual(expectedDialog.type);
+    expect(statusAlert.prop('children').props).toEqual(expectedDialog.props);
     expect(statusAlert.prop('onClose')).toEqual(mountedBanner.instance().onClose);
   };
 
   const isOpenBanner = () => {
     expect(mountedBanner.state('show')).toBe(true);
-
     const wrapperDiv = mountedBanner.find('div').first();
     isValidWrapperDiv(wrapperDiv);
-
-    const statusAlerts = mountedBanner.find(Alert);
+    const statusAlerts = mountedBanner.find('.edx-cookie-banner').first();
     expect(statusAlerts.length).toBe(1);
 
     const statusAlert = statusAlerts.first();
-    isValidStatusAlert({ statusAlert, open: isOpen });
+    isValidStatusAlert({ statusAlert, show: isOpen });
   };
 
   beforeEach(() => {
@@ -105,7 +102,7 @@ describe('CookiePolicyBanner', () => {
 
     isOpenBanner();
 
-    mountedBanner.find(Alert).prop('onClose')();
+    mountedBanner.find('.edx-cookie-banner').first().prop('onClose')();
 
     isClosedBanner();
 
