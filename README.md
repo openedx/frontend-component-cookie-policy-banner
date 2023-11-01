@@ -103,7 +103,6 @@ All community members are expected to follow the `Open edX Code of Conduct`_.
 ## Contact
 You can contact the edx open-source team at oscm@edx.org.
 
-## Reporting Security Issues
-
-Please do not report security issues in public. Send security concerns via email to security@edx.org.
+## Security reporting information
+Please do not report security issues in public. Send security concerns via email to security@openedx.org.
 
