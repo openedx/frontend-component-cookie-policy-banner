@@ -7,9 +7,11 @@
 
 We are not accepting public contributions to this repo at this time. 
 
-## Introduction
+## Purpose
 
 edX cookie policy banner React component
+
+## Getting Started
 
 ## Installation
 
@@ -87,12 +89,20 @@ npm run start
 
 locally builds the Storybook for the `CookiePolicyBanner` component on port `3003`.
 
+ ## License
+ 
+The code in this repository is licensed under the AGPLv3 unless otherwise
+noted.
+
+Please see `LICENSE <LICENSE>`_ for details.
+
 ## edX Code of Conduct
+All community members are expected to follow the `Open edX Code of Conduct`_.
 [`https://open.edx.org/code-of-conduct/`](https://open.edx.org/code-of-conduct/)
 
 ## Contact
 You can contact the edx open-source team at oscm@edx.org.
 
 ## Security reporting information
-Please do not report security issues in public. Send security concerns via email to security@edx.org.
+Please do not report security issues in public. Send security concerns via email to security@openedx.org.
 
