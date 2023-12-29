@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 import React, { Component } from 'react';
-import { StatusAlert } from '@edx/paragon';
+import { StatusAlert } from '@openedx/paragon';
 import PropTypes from 'prop-types';
 
 import {
