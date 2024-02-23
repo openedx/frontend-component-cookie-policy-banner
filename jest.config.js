@@ -5,7 +5,7 @@ module.exports = {
     './src/setupTest.js',
   ],
   transformIgnorePatterns: [
-    'node_modules/(?!@edx)',
+    '/node_modules/(?!@(open)?edx)',
   ],
   collectCoverage: true,
   collectCoverageFrom: [
