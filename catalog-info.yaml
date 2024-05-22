@@ -1,0 +1,16 @@
+# This file records information about this repo. Its use is described in OEP-55:
+# https://open-edx-proposals.readthedocs.io/en/latest/processes/oep-0055-proc-project-maintainers.html
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: 'cookie-policy-banner'
+  description: "The openedx cookie policy banner React component"
+  links:
+    - url: "https://github.com/openedx/frontend-component-cookie-policy-banner/blob/master/README.md"
+      title: "Documentation"
+      icon: "Web"
+spec:
+  owner: group:cookie-policy-banner-maintainers
+  type: 'library'
+  lifecycle: 'production'
