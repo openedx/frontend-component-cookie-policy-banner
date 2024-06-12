@@ -1,6 +1,6 @@
 /* eslint-disable react/no-danger */
 import React, { Component } from 'react';
-import { StatusAlert } from '@edx/paragon';
+import { Alert } from '@edx/paragon';
 import PropTypes from 'prop-types';
 
 import {
@@ -24,7 +24,7 @@ class CookieBanner extends Component {
 
     this.onClose = this.onClose.bind(this);
 
-    this.state = { open: false };
+    this.state = { show: false };
   }
 
   componentDidMount() {
@@ -32,7 +32,7 @@ class CookieBanner extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.open === true) {
+    if (this.state.show === true) {
       if (document.querySelectorAll('.edx-cookie-banner .btn') && document.querySelectorAll('.edx-cookie-banner .btn').length > 0) {
         document.querySelectorAll('.edx-cookie-banner .btn')[0].blur();
       }
@@ -40,23 +40,23 @@ class CookieBanner extends Component {
   }
 
   onClose(event) {
-    this.setState({ open: false }, () => {
+    this.setState({ show: false }, () => {
       createHasViewedCookieBanner(this.props.isViewedCookieName);
       this.props.onClose(event);
     });
   }
 
-  toggleDisplay(open) {
-    this.setState({ open });
+  toggleDisplay(show) {
+    this.setState({ show });
   }
 
   render() {
     const { languageCode, policyText } = this.props;
-    const { open } = this.state;
+    const { show } = this.state;
     const ietfTag = languageCode
       ? getIETFTagFromLanguageCode(languageCode) : getIETFTag();
 
-    if (open) {
+    if (show) {
       return (
         <div
           lang={IETF_TAGS_TO_LANGUAGE_CODE[ietfTag]}
@@ -65,13 +65,14 @@ class CookieBanner extends Component {
           aria-label={IETF_TAGS_TO_CONTAINER_ROLE_LABEL[ietfTag]}
           aria-live="polite"
         >
-          <StatusAlert
+          <Alert
             className="edx-cookie-banner"
-            open={this.state.open}
+            show={this.state.show}
             closeButtonAriaLabel={IETF_TAGS_TO_CLOSE_BUTTON_LABEL[ietfTag]}
-            dialog={(<span dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag, policyText) }} />)}
             onClose={this.onClose}
-          />
+          >
+            <span dangerouslySetInnerHTML={{ __html: getPolicyHTML(ietfTag, policyText) }} />
+          </Alert>
         </div>
       );
     }
