@@ -51,10 +51,6 @@
     "type-fest": "^2.14.0",
     "universal-cookie": "^4.0.0"
   },
-  "peerDependencies": {
-    "react": "^16.1.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.1.0 || ^17.0.0 || ^18.0.0"
-  },
   "devDependencies": {
     "@babel/cli": "7.16.0",
     "@babel/core": "7.16.0",
