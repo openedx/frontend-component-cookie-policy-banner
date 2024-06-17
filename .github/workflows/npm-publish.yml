@@ -35,8 +35,11 @@ jobs:
     - name: Create Build
       run: npm run compile-prod
 
-    - name: Run Coverage
-      uses: codecov/codecov-action@v2
+    - name: Coverage
+      uses: codecov/codecov-action@v4
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        fail_ci_if_error: false
 
     - name: Release Package
       env:
