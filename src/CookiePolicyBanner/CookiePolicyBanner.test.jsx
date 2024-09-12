@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
-import { StatusAlert } from '@edx/paragon';
 
 import CookiePolicyBanner from '.';
 import {
@@ -29,7 +28,6 @@ describe('CookiePolicyBanner', () => {
   const expectedLanguageCode = ENGLISH_LANGUAGE_CODE;
   const expectedWrapperAriaLabel = IETF_TAGS_TO_CONTAINER_ROLE_LABEL[expectedTag];
   const expectedPolicyHTML = 'foobar';
-  const expectedDialog = <span dangerouslySetInnerHTML={{ __html: expectedPolicyHTML }} />;
 
   createHasViewedCookieBanner.mockImplementation(() => {});
   getIETFTag.mockImplementation(() => expectedTag);
@@ -48,7 +46,7 @@ describe('CookiePolicyBanner', () => {
     expect(wrapperDiv).toHaveAttribute('aria-live', 'polite');
   };
 
-  const isValidStatusAlert = ({ statusAlert, open }) => {
+  const isValidStatusAlert = ({ statusAlert }) => {
     expect(statusAlert).toHaveClass('edx-cookie-banner');
     expect(statusAlert).toHaveAttribute('role', 'alert');
     expect(statusAlert).toContainElement(screen.getByText('foobar'));
