@@ -1,11 +1,13 @@
 module.exports = {
   testEnvironment: 'jest-environment-jsdom-global',
-  testURL: 'http://localhost/',
+  testEnvironmentOptions: {
+    url: 'http://localhost/',
+  },
   setupFiles: [
     './src/setupTest.js',
   ],
   transformIgnorePatterns: [
-    'node_modules/(?!@edx)',
+    '/node_modules/(?!@(open)?edx)',
   ],
   collectCoverage: true,
   collectCoverageFrom: [
