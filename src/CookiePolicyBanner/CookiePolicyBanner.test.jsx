@@ -1,6 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { StatusAlert } from '@openedx/paragon';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import userEvent from '@testing-library/user-event';
 
 import CookiePolicyBanner from '.';
 import {
@@ -20,7 +21,6 @@ jest.mock('../constants');
 
 describe('CookiePolicyBanner', () => {
   let props;
-  let mountedBanner;
   let isOpen;
   let onClose;
 
@@ -28,8 +28,6 @@ describe('CookiePolicyBanner', () => {
   const expectedLanguageCode = ENGLISH_LANGUAGE_CODE;
   const expectedWrapperAriaLabel = IETF_TAGS_TO_CONTAINER_ROLE_LABEL[expectedTag];
   const expectedPolicyHTML = 'foobar';
-  // eslint-disable-next-line
-  const expectedDialog = <span dangerouslySetInnerHTML={{ __html: expectedPolicyHTML }} />;
 
   createHasViewedCookieBanner.mockImplementation(() => {});
   getIETFTag.mockImplementation(() => expectedTag);
@@ -37,36 +35,28 @@ describe('CookiePolicyBanner', () => {
   hasViewedCookieBanner.mockImplementation(() => !isOpen);
 
   const isClosedBanner = () => {
-    expect(mountedBanner.state('open')).toBe(false);
-    expect(mountedBanner.html()).toBeNull();
+    expect(screen.queryByRole('complementary')).toBeNull();
   };
 
   const isValidWrapperDiv = (wrapperDiv) => {
-    expect(wrapperDiv.prop('lang')).toEqual(expectedLanguageCode);
-    expect(wrapperDiv.prop('className')).toBe('edx-cookie-banner-wrapper');
-    expect(wrapperDiv.prop('role')).toBe('complementary');
-    expect(wrapperDiv.prop('aria-label')).toBe(expectedWrapperAriaLabel);
-    expect(wrapperDiv.prop('aria-live')).toBe('polite');
+    expect(wrapperDiv).toHaveAttribute('lang', expectedLanguageCode);
+    expect(wrapperDiv).toHaveClass('edx-cookie-banner-wrapper');
+    expect(wrapperDiv).toHaveAttribute('role', 'complementary');
+    expect(wrapperDiv).toHaveAttribute('aria-label', expectedWrapperAriaLabel);
+    expect(wrapperDiv).toHaveAttribute('aria-live', 'polite');
   };
 
-  const isValidStatusAlert = ({ statusAlert, open }) => {
-    expect(statusAlert.prop('className')).toEqual('edx-cookie-banner');
-    expect(statusAlert.prop('open')).toEqual(open);
-    expect(statusAlert.prop('dialog').type).toEqual(expectedDialog.type);
-    expect(statusAlert.prop('dialog').props).toEqual(expectedDialog.props);
-    expect(statusAlert.prop('onClose')).toEqual(mountedBanner.instance().onClose);
+  const isValidStatusAlert = ({ statusAlert }) => {
+    expect(statusAlert).toHaveClass('edx-cookie-banner');
+    expect(statusAlert).toHaveAttribute('role', 'alert');
+    expect(statusAlert).toContainElement(screen.getByText('foobar'));
   };
 
   const isOpenBanner = () => {
-    expect(mountedBanner.state('open')).toBe(true);
-
-    const wrapperDiv = mountedBanner.find('div').first();
+    const wrapperDiv = screen.getByRole('complementary');
     isValidWrapperDiv(wrapperDiv);
 
-    const statusAlerts = mountedBanner.find(StatusAlert);
-    expect(statusAlerts.length).toBe(1);
-
-    const statusAlert = statusAlerts.first();
+    const statusAlert = screen.getByRole('alert');
     isValidStatusAlert({ statusAlert, open: isOpen });
   };
 
@@ -83,7 +73,7 @@ describe('CookiePolicyBanner', () => {
   it('empty component when banner has already been viewed', () => {
     isOpen = false;
 
-    mountedBanner = mount(<CookiePolicyBanner {...props} />);
+    render(<CookiePolicyBanner {...props} />);
 
     isClosedBanner();
   });
@@ -91,7 +81,7 @@ describe('CookiePolicyBanner', () => {
   it('banner component when open', () => {
     isOpen = true;
 
-    mountedBanner = mount(<CookiePolicyBanner {...props} />);
+    render(<CookiePolicyBanner {...props} />);
 
     isOpenBanner();
   });
@@ -101,11 +91,11 @@ describe('CookiePolicyBanner', () => {
     onClose = jest.fn();
     props = { onClose };
 
-    mountedBanner = mount(<CookiePolicyBanner {...props} />);
+    render(<CookiePolicyBanner {...props} />);
 
     isOpenBanner();
 
-    mountedBanner.find(StatusAlert).prop('onClose')();
+    userEvent.click(screen.getByRole('button', { name: /close/i }));
 
     isClosedBanner();
 
