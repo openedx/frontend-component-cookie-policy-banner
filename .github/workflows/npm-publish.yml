@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
       with:
         fetch-depth: 0
         token: ${{ secrets.SEMANTIC_RELEASE_GITHUB_TOKEN }}
@@ -19,7 +19,7 @@ jobs:
       run: echo "NODE_VER=`cat .nvmrc`" >> $GITHUB_ENV
 
     - name: Setup Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@f1f314fca9dfce2769ece7d933488f076716723e # v1.4.6
       with:
         node-version: ${{ env.NODE_VER }}
 
@@ -36,7 +36,7 @@ jobs:
       run: npm run compile-prod
 
     - name: Coverage
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238 # v4.6.0
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         fail_ci_if_error: false
